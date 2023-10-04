@@ -7,7 +7,7 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
 - Terminy kartkówek: TBA
 - Termin kolokwium: TBA
 - Ocena z ćwiczeń: 20% kartkówki, 40% kolokwium, 40% projekt.
-- Konkurs modeli: osoby z najlepszymi projektami mogą być zwolnione z egzaminu pod warunkiem uzyskania co najmniej dobrej oceny z kolokwium.
+- Konkurs modeli: osoby z najlepszymi projektami mogą być zwolnione z egzaminu, pod warunkiem uzyskania co najmniej oceny 4 z kolokwium.
 
 ## Zajęcia
 - 4-5 pażdziernika 2023: powtórzenie z algebry.
