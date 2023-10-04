@@ -10,5 +10,5 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
 - Konkurs modeli: osoby z najlepszymi projektami mogą być zwolnione z egzaminu, pod warunkiem uzyskania co najmniej oceny 4 z kolokwium.
 
 ## Zajęcia
-- 4-5 pażdziernika 2023: powtórzenie z algebry.
-- 10-11 pażdziernika 2023: powtórzenie ze statystki oraz r. prawdopodobieństwa.
+- 4-5 października 2023: powtórzenie z algebry.
+- 10-11 października 2023: powtórzenie ze statystki oraz r. prawdopodobieństwa.
