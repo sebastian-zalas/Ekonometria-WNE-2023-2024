@@ -17,5 +17,5 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - W folderze znajdują się notatki przerabiane na zajęciach oraz rozwiązania zadań.
 - 10-11 października 2023: powtórzenie ze statystki oraz r. prawdopodobieństwa.
   - Powtórzyliśy zagadnienia związane z rach, prawdopodobieństwa: wartość oczekiwana, wariancja  oraz ich wielowymiarowe uogólnienia
-  - Zadania 1,2,3,4,5,6 oraz 2 i 3 z rozkładu normalnego - rozwiązania są opublikowane
+  - Zadania 1,2,3,4,5,6,10 oraz 2 i 3 z rozkładu normalnego - rozwiązania są opublikowane
 - 18-19 października 2023 
