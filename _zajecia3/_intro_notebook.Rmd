@@ -1,0 +1,843 @@
+---
+title: "Rintro"
+author: "Sebastian Zalas"
+date: "2023-10-18"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+---
+
+# Wprowadzenie do `R`  {#R-intro}
+
+setwd('C:/Users/alter-ego/OneDrive/_ekonometria2023/_3_rintro')
+
+## Zaczynamy!
+
+`R` jest zarówno językiem programowania jak i pakietem statystycznym, który jest *open-source*. Aby zacząć go używać, należy zainstalować 2 programy:
+  
+  1. [`R`, właściwy język programowania.](https://www.r-project.org)
+    - Wybierz właściwy system operacyjny oraz najnowszą wersję.
+    - Chose your operating system, and select the most recent version.
+  
+  
+  2. [RStudio, IDE - czyli program służący do tworzenia oprogramowania w `R`.](http://www.rstudio.com/)
+    - Zauważ że musisz mieć zainstalowany `R` aby używać RStudio. RStudio to po prostu interfejs stosowany do używania `R`.
+
+
+# `R` jest szeroko uzywanym programem do analiz statystyczych.
+  
+
+Kilka następnych rozdziałów będzie burzliwym wprowadzeniem do „R”. W żadnym wypadku nie mają one stanowić kompletnego odniesienia do języka „R”, ale po prostu wprowadzenie do podstaw, które będą nam potrzebne po drodze. Kilka ważniejszych tematów zostanie ponownie podkreślonych, ponieważ są one faktycznie potrzebne do analiz.
+
+Ten wprowadzający rozdział „R” może wydawać się przytłaczającą ilością informacji. Nie oczekuje się, że opanujesz wszystko za pierwszym razem. Powinieneś wypróbować cały kod z tego rozdziału, a następnie wracać do niego kilka razy, gdy będziesz wracać do koncepcji podczas przeprowadzania analiz. Przedstawiamy tylko najbardziej podstawowe aspekty `R`. Jeśli chcesz dowiedzieć się więcej, istnieje niezliczona ilość samouczków online i możesz zacząć od oficjalnego [CRAN sample session](https://cran.r-project.org/doc/manuals/r-release/R-intro.html#A-sample-session)lub przejrzyj zasoby na stronie [Rstudio](https://www.rstudio.com/online-learning/#DataScience) lub na tej  [github repo](https://github.com/qinwf/awesome-R).
+
+## Starting R and RStudio
+Kluczową różnicą, którą powinieneś zrozumieć, jest różnica pomiędzy `R`, rzeczywistym językiem programowania, a `RStudio`, popularnym interfejsem `R`, który pozwala wydajnie i łatwiej pracować z `R`.
+
+Najlepszym sposobem na docenienie wartości `RStudio` jest rozpoczęcie używania `R` *bez* `RStudio`. Aby to zrobić, kliknij dwukrotnie interfejs GUI R, który powinieneś pobrać na swój komputer, wykonując powyższe kroki (w systemie Windows lub Mac) lub uruchom R w terminalu (w systemie Linux lub Mac), wpisując po prostu „R” w polu terminala.Właśnie otworzyłeś konsolę R **konsolę**, która pozwala rozpocząć wpisywanie kodu zaraz po znaku `>`, zwaną *podpowiedź*. Spróbuj wpisać `2 + 2` lub `print("Twoje imię")` i naciśnij klawisz Return. I *voilà*, Twoje pierwsze polecenia R!
+
+Wpisywanie w konsoli jednego polecenia po drugim nie jest zbyt wygodne, ponieważ nasza analiza staje się bardziej skomplikowana. Idealnie byłoby, gdybyśmy zebrali wszystkie instrukcje poleceń w pliku i uruchamiali je jedna po drugiej, automatycznie. Możemy to zrobić pisząc tzw. **pliki skryptów** lub po prostu **skrypty**, czyli proste pliki tekstowe z rozszerzeniem `.R` lub `.r`, które można *wstawić* (lub *pobrać*) w sesję „R”. RStudio bardzo ułatwia ten proces.
+
+Otwórz `RStudio`, klikając aplikację `RStudio` na swoim komputerze i zwróć uwagę, jak całe środowisko różni się od podstawowej konsoli `R` - tak naprawdę ta *taka sama* konsola `R` działa w lewym dolnym rogu płyta. Lewy górny panel to miejsce, w którym możesz pisać skrypty – czyli wiele linii kodu, które możesz uruchamiać, kiedy tylko chcesz. Aby uruchomić pojedynczą linię kodu, po prostu zaznacz ją i naciśnij `Command` + `Return`.
+
+RStudio ma dużą liczbę przydatnych skrótów klawiaturowych. Listę z nich można znaleźć za pomocą skrótu klawiaturowego — skrótu klawiaturowego, który pozwala rządzić nimi wszystkimi:
+
+- W systemie Windows: `Alt` + `Shift` + `K`
+- Na Macu: `Opcja` + `Shift` + `K`
+
+Zespół `RStudio` opracował [wiele „ściągawek”] (https://www.rstudio.com/resources/cheatsheets/) do pracy zarówno z `R`, jak i `RStudio`. [Ten konkretny kod do Base `R`](http://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf) podsumowuje wiele koncepcji zawartych w tym dokumencie. ^[Podczas programowania często dobrą praktyką jest przestrzeganie przewodnika po stylu. (Gdzie trafiają spacje? Tabulatory czy spacje? Podkreślenia lub CamelCase podczas nazywania zmiennych?) Żaden przewodnik po stylu nie jest „poprawny”, ale pomaga być świadomym tego, co robią inni. Ważniejszą rzeczą jest zachowanie spójności w obrębie własnego kodu. Oto dwa przewodniki: [Przewodnik po stylu Hadley Wickham](http://adv-r.had.co.nz/Style.html) i [Przewodnik po stylu Google](https://google.github.io/styleguide /Rguide.xml). W tym kursie naszym głównym odstępstwem od tych dwóch wskazówek jest użycie `=` zamiast `<-`. Ze względów praktycznych powinieneś pomyśleć `=` za każdym razem, gdy zobaczysz `<-`.]
+
+### Podstawowe pojęcia
+
+* `R`: pakiet statystyczny
+* `RStudio`: *integrated development environment (IDE)*, interfejs do pracy z `R`
+* *komenda*: polecenia (tekst lub liczby) które `R` *rozumie*.
+* *skrypt*: lista poleceń zebranych w pliku tekstowym, każda oddzielona nową linią, do uruchomienia jedna po drugiej.
+
+## Podstawowe obliczenia
+
+Na początek użyjemy „R” jak prostego kalkulatora. Uruchom następujący kod bezpośrednio z konsoli RStudio lub w RStudio, zapisując go w skrypcie i uruchamiając za pomocą „Polecenie” + „Return”.
+
+#### Dodawanie, odejmowanie, mnożenie i dzielenie {-}
+| Math          | `R` code    | Result    |
+|:-------------:|:-------:|:---------:|
+| $3 + 2$       | `3 + 2` | `r 3 + 2` |
+| $3 - 2$       | `3 - 2` | `r 3 - 2` |
+| $3 \cdot2$    | `3 * 2` | `r 3 * 2` |
+| $3 / 2$       | `3 / 2` | `r 3 / 2` |
+
+#### Potęgowanie  {-}
+| Math         | `R` code | Result    |
+|:-------------:|:-------:|:---------:|
+| $3^2$        | `3 ^ 2`         | `r 3 ^ 2`         |
+| $2^{(-3)}$   | `2 ^ (-3)`      | `r 2 ^ (-3)`      |
+| $100^{1/2}$  | `100 ^ (1 / 2)` | `r 100 ^ (1 / 2)` |
+| $\sqrt{100}$ | `sqrt(100)`     | `r sqrt(100)`     |
+
+#### Stałe matematyczne  {-}
+| Math         | `R` code             | Result            |
+|:------------:|:---------------:|:-----------------:|
+| $\pi$        | `pi`            | `r pi`            |
+| $e$          | `exp(1)`        | `r exp(1)`        |
+
+#### Logarytmy  {-}
+Zauważ, że będziemy używać zamiennie $\ln$ i $\log$, aby oznaczać logarytm naturalny. W `R` nie ma `ln()`, zamiast tego używa `log()` do oznaczenia logarytmu naturalnego.
+
+| Math         | `R` code        | Result            |
+|:------------:|:---------------:|:-----------------:|
+| $\log(e)$         | `log(exp(1))`       | `r log(exp(1))`       |
+| $\log_{10}(1000)$ | `log10(1000)`       | `r log10(1000)`       |
+| $\log_{2}(8)$     | `log2(8)`           | `r log2(8)`           |
+| $\log_{4}(16)$    | `log(16, base = 4)` | `r log(16, base = 4)` |
+
+#### Trigonometry  {-}
+
+| Math          | `R` code       | Result      |
+|:------------:|:---------------:|:-----------------:|
+| $\sin(\pi / 2)$ | `sin(pi / 2)`| `r sin(pi / 2)` |
+| $\cos(0)$       | `cos(0)`     | `r cos(0)`      |
+
+## Jak uzyskać pomoc?
+Używając `R` jako kalkulatora, widzieliśmy wiele funkcji: `sqrt()`, `exp()`, `log()` i `sin()`. Aby uzyskać dokumentację dotyczącą funkcji w `R`, po prostu wstaw znak zapytania przed nazwą funkcji lub wywołaj funkcję `help(funkcja)`, a RStudio wyświetli dokumentację, na przykład:
+
+```{r, eval = FALSE}
+?log
+?sin
+?paste
+?lm
+help(lm)   # help() is equivalent
+help(ggplot,package="ggplot2")  # show help from a certain package
+```
+
+Często jedną z najtrudniejszych rzeczy do zrobienia podczas nauki „R” jest poproszenie o pomoc. Najpierw musisz zdecydować się poprosić o pomoc, a następnie musisz wiedzieć *jak* poprosić o pomoc. Pierwszą linią obrony powinien być przekazany Google komunikat o błędzie lub krótki opis problemu. (Umiejętność rozwiązywania problemów za pomocą tej metody szybko staje się niezwykle cenną umiejętnością.) Jeśli to zawiedzie, a w końcu tak się stanie, powinieneś poprosić o pomoc. Jest wiele rzeczy, które powinieneś uwzględnić, kontaktując się z instruktorem lub publikując post na stronie pomocy, takiej jak [Stack Overflow] (https://stackoverflow.com).
+
+- Opisz, czego oczekujesz od kodu.
+- Podaj ostateczny cel, który chcesz osiągnąć. (Czasami to, czego oczekujesz od kodu, nie jest tym, co chcesz faktycznie zrobić.)
+- Podaj pełny tekst wszelkich otrzymanych błędów.
+— Podaj wystarczającą ilość kodu, aby odtworzyć błąd. Często na potrzeby tego kursu możesz po prostu opublikować cały skrypt `.R` lub `.Rmd` w `slack`.
+- Czasami pomocne jest również dołączenie zrzutu ekranu całego okna RStudio, gdy wystąpi błąd.
+
+Jeśli wykonasz te kroki, problem zostanie rozwiązany znacznie szybciej, a przy okazji prawdopodobnie dowiesz się więcej. Nie zniechęcaj się, jeśli napotkasz błędy i trudności podczas nauki `R`. (Lub jakakolwiek inna umiejętność techniczna.) Jest to po prostu część procesu uczenia się.
+
+## Instalowanie pakietów
+`R` ma wiele wbudowanych funkcji i zbiorów danych, ale jedną z głównych zalet `R` jako projektu open source jest system pakietów. Pakiety dodają dodatkowe funkcje i dane. Często, jeśli chcesz coś zrobić w `R`, a nie jest to domyślnie dostępne, istnieje duża szansa, że istnieje pakiet, który spełni Twoje potrzeby.
+
+Aby zainstalować pakiet, użyj funkcji `install.packages()`. Pomyśl o tym jak o zakupie książki kucharskiej w sklepie, zabraniu jej do domu i umieszczeniu na półce (tj. w bibliotece):
+
+```{r, eval = FALSE}
+install.packages("ggplot2")
+```
+
+Po zainstalowaniu pakietu należy go załadować do bieżącej sesji `R`, zanim będzie można go użyć. Potraktuj to jak zdjęcie książki z półki i otwarcie jej do przeczytania.
+
+```{r, message = FALSE, warning = FALSE}
+library(ggplot2)
+```
+
+Po zamknięciu „R” wszystkie opakowania zostaną zamknięte i odłożone na wyimaginowaną półkę. Następnym razem, gdy otworzysz `R`, nie musisz ponownie instalować pakietu, ale musisz załadować wszystkie pakiety, których zamierzasz używać, wywołując `library()`.
+
+## „Kod” a dane wyjściowe w tym dokumencie {#code-output}
+
+Wszystkie linie wyjściowe są poprzedzone znakiem „##”, aby umożliwić rozróżnienie. Typowy fragment kodu z danymi wyjściowymi będzie zatem wyglądać następująco:
+
+```{r}
+
+1 + 3
+# everything after a # is a comment, i.e. R disregards it.
+
+```
+
+gdzie w pierwszej linii widzisz kod `R`, a w drugiej linii wynik. Jak wspomniano, linia ta zaczyna się od `##` oznaczającego *to jest wyjście*, po którym następuje `[1]` (wskazujące, że jest to wektor o długości *jeden* - więcej na ten temat poniżej!), po którym następuje rzeczywista wartość wynik - `1 + 3 = 4`!
+
+Zauważ, że możesz po prostu skopiować i wkleić cały widoczny kod do konsoli „R”. Tak naprawdę jesteś *zdecydowanie* zachęcany do zrobienia tego i wypróbowania **całego kodu**, który widzisz w tej książce.
+
+Na koniec należy pamiętać, że ten sposób wyświetlania wyników jest w pełni naszym wyborem w tym podręczniku i że innych formatów wyjściowych należy spodziewać się gdzie indziej. Na przykład w mojej konsoli „RStudio” powyższy kod i dane wyjściowe wyglądają następująco:
+
+```R
+> 1 + 3
+[1] 4
+```
+
+
+## Typy danych {#data-types}
+`R` ma kilka podstawowych *typów danych*. Chociaż `R` nie jest *językiem o silnie typowanym typie* (tj. w większości przypadków możesz mieć agnostyka w stosunku do typów), warto wiedzieć, jakie typy danych są dla ciebie dostępne:
+
+- Numeric
+    - również znany jako Double. Domyślny typ w przypadku liczb.
+    - Przykład: `1`, `1.0`, `42.5`
+- Integer
+    - Przykład: `1L`, `2L`, `42L`
+- Complex
+    - Przykład: `4 + 2i`
+- Logical
+    - Dwie możliwe wartości: `TRUE` and `FALSE`
+    - Można również używać `T` oraz `F`, ale to *nie* jest wskazane.
+    - `NA` jest również wartością logiczną.
+- Character
+    - Przykład: `"a"`, `"Statistics"`, `"1 plus 2."`
+- Kategoryczne lub `factor`
+    - Miks integer oraz character. Zmienna typu `factor` przypisuje etykietę do wartości liczbowej.
+    - Na przykład `factor(x=c(0,1),labels=c("male","female"))` przypisuje słowo *male* do wartości liczbowych `0`, a słowo *female* do wartości „1”.
+
+
+## Struktury danych
+
+`R` ma także kilka podstawowych *struktur* danych. Struktura danych jest albo jednorodna (wszystkie elementy są tego samego typu danych), albo heterogeniczna (elementy mogą należeć do więcej niż jednego typu danych).
+
+| Wymiar    | **Homogeniczna**| **Heterogeniczna**|
+|:---------:|:---------------:|:-----------------:|
+| 1         | Vector          | List              |
+| 2         | Matrix          | Data Frame        |
+| 3+        | Array           |    nested Lists   |
+
+### Wektory (Vectors)
+
+Wiele operacji w `R` w dużym stopniu wykorzystuje **wektory**. Wektor jest *pojemnikiem* na obiekty identycznego typu (patrz \@ref(data-types) powyżej). Wektory w `R` są indeksowane począwszy od `1`. To właśnie wskazuje „[1]” na wyjściu, że pierwszy element wyświetlanego wiersza jest pierwszym elementem wektora. Większe wektory będą rozpoczynać dodatkowe wiersze od czegoś w rodzaju „[7]”, gdzie „7” jest indeksem pierwszego elementu tego wiersza.
+
+Prawdopodobnie najczęstszym sposobem tworzenia wektora w „R” jest użycie funkcji „c()”, która jest skrótem od „połącz”. Jak sama nazwa wskazuje, łączy w sobie listę elementów oddzielonych przecinkami. (Czy jesteś zajęty wpisywaniem wszystkich tych przykładów w konsoli „R”? :-) )
+
+```{r}
+c(1, 3, 5, 7, 8, 9)
+c(5,5,5)
+```
+
+Tutaj „R” po prostu wyprowadza ten wektor. Jeśli chcielibyśmy zapisać ten wektor w **zmiennej**, możemy to zrobić za pomocą operatora **przypisania** `=`. W tym przypadku zmienna „x” przechowuje teraz właśnie utworzony wektor i możemy uzyskać dostęp do wektora, wpisując „x”.
+
+```{r}
+x = c(1, 3, 5, 7, 8, 9)
+x
+```
+
+Na marginesie, operator przypisania w `R` ma długą historię, częściowo za sprawą klawiszy dostępnych na [klawiaturach twórców języka `S`.](https://twitter.com/kwbroman/ status/747829864091127809) (który poprzedzał `R`.) Dla uproszczenia użyjemy `=`, ale pamiętaj, że często zobaczysz `<-` jako operator przypisania.
+
+Ponieważ wektory muszą zawierać elementy tego samego typu, „R” automatycznie **wymusi** (tj. skonwertuje) na jeden typ podczas próby utworzenia wektora łączącego wiele typów.
+
+```{r}
+c(42, "Statistics", TRUE)
+c(42, TRUE)
+```
+
+Często możesz chcieć utworzyć wektor w oparciu o sekwencję liczb. Najszybciej i najłatwiej to zrobić za pomocą operatora `:`, który tworzy sekwencję liczb całkowitych pomiędzy dwiema określonymi liczbami całkowitymi.
+
+```{r}
+(y = 1:100)
+```
+
+
+Tutaj widzimy „R” oznaczający wiersze po pierwszym, ponieważ jest to duży wektor. Widzimy także, że umieszczając przypisanie w nawiasach, „R” przechowuje wektor w zmiennej zwanej „y” i automatycznie wysyła „y” do konsoli.
+
+Zauważ, że skalary nie istnieją w `R`. Są to po prostu wektory o długości „1”.
+
+```{r}
+2
+```
+
+Jeśli chcemy utworzyć sekwencję, która nie jest ograniczona do liczb całkowitych i zwiększa się o 1 na raz, możemy użyć funkcji `seq()`.
+```{r}
+seq(from = 1.5, to = 4.2, by = 0.1)
+```
+
+Funkcje omówimy szczegółowo później, ale zwróć uwagę, że etykiety wejściowe „od”, „do” i „przez” są opcjonalne.
+```{r}
+seq(1.5, 4.2, 0.1)
+```
+
+Another common operation to create a vector is `rep()`, which can repeat a single value a number of times.
+```{r}
+rep("A", times = 10)
+```
+
+Funkcji „rep()” można użyć do powtórzenia wektora określoną liczbę razy.
+
+```{r}
+rep(x, times = 3)
+```
+
+Widzieliśmy teraz cztery różne sposoby tworzenia wektorów:
+- `c()`
+- `:`
+- `seq()`
+- `rep()`
+Do tej pory używaliśmy ich głównie osobno, ale często używa się ich razem.
+```{r}
+c(x, rep(seq(1, 9, 2), 3), c(1, 2, 3), 42, 2:4)
+```
+
+Długość wektora można uzyskać za pomocą funkcji „length()”.
+```{r}
+length(x)
+length(y)
+```
+
+```{block type="warning"}
+Wypróbujmy to! **Twoja kolej**:
+```
+
+#### Zadanie 1
+
+1. Utwórz wektor pięciu jedynek, czyli: `[1,1,1,1,1]`
+1. Zauważ, że operator dwukropka `a:b` jest skrótem od *konstruuj sekwencję **od** `a` **do** `b`*. Utwórz wektor, od który będzie odliczał od 10 do 0, czyli będzie wyglądał tak: `[10,9,8,7,6,5,4,3,2,1,0]`!
+1. funkcja `rep` pobiera dodatkowe argumenty `times` (jak powyżej) i `each`, które mówią, jak często *każdy element* powinien być powtarzany (w przeciwieństwie do całego wektora wejściowego). Użyj `rep`, aby utworzyć wektor wyglądający tak: `[1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3]`
+
+#### Wywoływanie (Subsetting)
+
+Aby podzielić wektor na podzbiór, czyli wybrać tylko niektóre jego elementy, używamy nawiasów kwadratowych „[]”. Widzimy tutaj, że `x[1]` zwraca pierwszy element, a `x[3]` zwraca trzeci element:
+
+```{r}
+x
+x[1]
+x[3]
+```
+
+Możemy też wykluczyć pewne indeksy, w tym przypadku drugi element.
+
+```{r}
+x[-2]
+```
+
+Na koniec widzimy, że możemy dokonać podzbioru w oparciu o wektor indeksów.
+```{r}
+x[1:3]
+x[c(1,3,4)]
+```
+
+Wszystkie powyższe stanowią podzbiór wektora za pomocą wektora indeksów. (Pamiętaj, że pojedyncza liczba jest nadal wektorem.) Zamiast tego moglibyśmy użyć wektora wartości logicznych.
+```{r}
+z = c(TRUE, TRUE, FALSE, TRUE, TRUE, FALSE)
+z
+```
+
+```{r}
+x[z]
+```
+
+`R` może wykonywać wiele operacji zarówno na wektorach, jak i skalarach:
+
+```{r}
+x = 1:10  # wektor
+x + 1     # dodawanie wektora i skalara
+2 * x     # pomnóż elementy wektora przez 2
+2 ^ x     # weź 2 do potęgi elementów x
+sqrt(x)   # oblicz pierwiastek elementów x
+log(x)    # logarytm naturalny elementów x
+x + 2*x   # dodaj wektor x do wektora 2x
+```
+
+Widzimy, że gdy funkcja taka jak „log()” jest wywoływana na wektorze „x”, zwracany jest wektor, który zastosował tę funkcję do każdego elementu wektora „x”.
+
+
+### Operatory logiczne
+
+| Operator | Podsumowanie              | Przykład               | Wynik |
+|:---------|:---------------------:|:---------------------:|:-------:|
+| `x < y`  | `x` mniejsze niż `y`                | `3 < 42`               | `r 3 < 42`               |
+| `x > y`  | `x` większe niż `y`             | `3 > 42`               | `r 3 > 42`               |
+| `x <= y` | `x` mniejsze równe `y`    | `3 <= 42`              | `r 3 <= 42`              |
+| `x >= y` | `x` większe równe `y` | `3 >= 42`              | `r 3 >= 42`              |
+| `x == y` | `x` równe `y`                  | `3 == 42`              | `r 3 == 42`              |
+| `x != y` | `x` nie równe `y`             | `3 != 42`              | `r 3 != 42`              |
+| `!x`     | nie `x`                          | `!(3 > 42)`            | `r !(3 > 42)`            |
+| `x | y`  | `x` lub `y`                       | `(3 > 42) | TRUE`      | `r (3 > 42) | TRUE`      |
+| `x & y`  | `x` oraz `y`                      | `(3 < 4) & ( 42 > 13)` | `r (3 < 4) & ( 42 > 13)` |
+
+W `R` operatory logiczne działają także na wektorach:
+
+```{r}
+x = c(1, 3, 5, 7, 8, 9)
+```
+
+```{r}
+x > 3
+x < 3
+x == 3
+x != 3
+```
+
+```{r}
+x == 3 & x != 3
+x == 3 | x != 3
+```
+
+Jest to całkiem przydatne w przypadku wywoływania podzbiorów.
+
+```{r}
+x[x > 3]
+x[x != 3]
+```
+
+
+```{r}
+sum(x > 3)
+as.numeric(x > 3)
+```
+
+Tutaj widzieliśmy, że użycie funkcji `suma()` na wektorze wartości logicznych `TRUE` i `FALSE`, będącym wynikiem `x > 3` daje wynik numeryczny: właśnie *policzyłeś*, ile elementów z `x`, dla warunku `> 3` ma wartość `TRUE`. Podczas wywołania `sum()`, `R` najpierw automatycznie zamienia wartość logiczną na numeryczną, gdzie `TRUE` to `1`, a `FALSE` to `0`. To wymuszenie przejścia z logicznego na numeryczne ma miejsce w przypadku większości operacji matematycznych.
+
+```{r}
+# which(warunek na x) zwraca true/false  
+# każdy indeks x warunke jest spełniony
+which(x > 3)
+x[which(x > 3)]
+
+max(x)
+which(x == max(x))
+which.max(x)
+```
+
+#### Task 2
+
+1. Utwórz wektor wypełniony 10 liczbami wylosowanymi z rozkładu jednostajnego (podpowiedź: użyj funkcji „runif”) i zapisz je w `x`.
+1. Używając podzbioru logicznego jak powyżej, zbierz wszystkie elementy `x`, które są większe niż 0,5 i zapisz je w `y`. 
+1. używając funkcji „które”, zapisz *indeksy* wszystkich elementów „x”, które są większe niż 0,5 w „iy”. 
+1. Sprawdź, czy „y” i „x[iy]” są identyczne.
+
+### Macierze
+
+„R” może być również użyte do obliczeń **macierzowych**. Macierze mają wiersze i kolumny zawierające jeden typ danych. W macierzy ważna jest kolejność wierszy i kolumn. (Nie dotyczy to *ramek danych*, co zobaczymy później.)
+
+Macierze można tworzyć za pomocą funkcji `matrix`.
+
+```{r}
+x = 1:9
+x
+X = matrix(x, nrow = 3, ncol = 3)
+X
+```
+
+Zauważ, że w `R` rozróżniana jest wielkość liter (`x` vs `X`).
+
+Domyślnie funkcja `matrix` wypełnia dane w macierzy kolumna po kolumnie. Ale możemy też powiedzieć „R”, aby zamiast tego wypełniał wiersze:
+
+```{r}
+Y = matrix(x, nrow = 3, ncol = 3, byrow = TRUE)
+Y
+```
+
+Możemy również utworzyć macierz o określonym wymiarze, w której każdy element jest taki sam, w tym przypadku „0”.
+
+```{r}
+Z = matrix(0, 2, 4)
+Z
+```
+
+Podobnie jak wektory, macierze można wywoływać za pomocą nawiasów kwadratowych „[]”. Ponieważ jednak macierze są dwuwymiarowe, podczas wywoływania musimy określić zarówno wiersz, jak i kolumnę.
+
+```{r}
+X
+X[1, 2]
+```
+
+Tutaj uzyskaliśmy dostęp do elementu w pierwszym wierszu i drugiej kolumnie. Możemy także podzielić cały wiersz lub kolumnę.
+
+```{r}
+X[1, ]
+X[, 2]
+```
+
+Możemy również użyć wektorów do podzbioru więcej niż jednego wiersza lub kolumny na raz. Tutaj podstawiamy pierwszą i trzecią kolumnę drugiego wiersza:
+
+```{r}
+X[2, c(1, 3)]
+```
+
+Macierze można również tworzyć łącząc wektory jako kolumny, używając polecenia „cbind”, lub łącząc wektory jako wiersze, używając polecenia „rbind”.
+
+```{r}
+x = 1:9
+rev(x)
+rep(1, 9)
+```
+
+```{r}
+rbind(x, rev(x), rep(1, 9))
+```
+
+```{r}
+cbind(col_1 = x, col_2 = rev(x), col_3 = rep(1, 9))
+```
+
+Używając `rbind` i `cbind`, możesz określić nazwy „argumentów”, które będą używane jako nazwy kolumn.
+
+„R” można następnie wykorzystać do wykonania obliczeń macierzowych.
+
+```{r}
+x = 1:9
+y = 9:1
+X = matrix(x, 3, 3)
+Y = matrix(y, 3, 3)
+X
+Y
+```
+
+```{r}
+X + Y
+X - Y
+X * Y
+X / Y
+```
+
+Zauważ, że `X * Y` to **nie** mnożenie macierzy. Jest to mnożenie *element po elemencie*. (To samo dla `X / Y`).
+Mnożenie macierzy wykorzystuje operator `%*%`. Inne funkcje macierzowe obejmują „t()”, która daje transpozycję macierzy i „solve()”, która zwraca odwrotność macierzy kwadratowej, jeśli jest ona odwracalna.
+
+```{r}
+X %*% Y
+t(X)
+```
+
+### Arrays - tablice
+
+A vector is a one-dimensional array. A matrix is a two-dimensional array. In `R` you can create arrays of arbitrary dimensionality `N`. Here is how:
+
+Wektor jest tablicą jednowymiarową. Macierz jest tablicą dwuwymiarową. W `R` możesz tworzyć tablice o dowolnej wymiarowości `N`. Oto jak:
+
+```{r}
+d = 1:16
+d3 = array(data = d,dim = c(4,2,2))
+d4 = array(data = d,dim = c(4,2,2,3))  # will recycle 1:16
+d3
+```
+
+Możesz zobaczyć, że `d3` to po prostu *dwie* (4,2) macierze ułożone jedna na drugiej, tak jakby były *dwie strony*. Podobnie „d4” miałoby dwie strony i kolejne 3 rejestry w czwartym wymiarze. I tak dalej.
+Możesz podzielić tablicę na części, tak jak wektor lub macierz, pamiętając o indeksowaniu każdego wymiaru:
+
+```{r}
+d3[ ,1,1]  # wszystkie elementy z kolumny 1, tablica 1
+d3[2:3, , ]  # rzędy 2:3 ze wszystkich tablic
+d3[2,2, ]  # rząd 2, kolumna 2 z wszystkich tablic.
+```
+
+
+#### Zadanie 3
+
+1. Utwórz wektor zawierający „1,2,3,4,5” o nazwie v. 
+1. Utwórz macierz (2,5) `m` zawierającą dane `1,2,3,4,5,6,7,8,9,10`. Pierwszym wierszem powinno być „1,2,3,4,5”.
+1. Wykonaj mnożenie macierzy `m` przez `v`. Użyj polecenia `%*%`. Jaki wymiar ma wyjście?
+1. Dlaczego `v %*% m` nie działa?
+
+
+### Listy
+
+Lista to jednowymiarowa *heterogeniczna* struktura danych. Jest więc indeksowany jak wektor z pojedynczą wartością całkowitą (lub z nazwą), ale każdy element może zawierać element dowolnego typu. Wiele struktur i wyników „R” jest listami. Listy to niezwykle przydatne i wszechstronne obiekty, dlatego upewnij się, że rozumiesz ich zastosowanie:
+
+```{r}
+# creation without fieldnames
+list(42, "Hello", TRUE)
+
+# creation with fieldnames
+ex_list = list(
+  a = c(1, 2, 3, 4),
+  b = TRUE,
+  c = "Hello!",
+  d = function(arg = 42) {print("Hello World!")},
+  e = diag(5)
+)
+```
+
+Listy można wywoływać przy użyciu dwóch składni: operatora `$` i nawiasów kwadratowych `[]`. Operator `$` zwraca nazwany **element** listy. Składnia `[]` zwraca **listę**, podczas gdy `[[]]` zwraca **element** listy.
+
+- `ex_list[1]` zwraca listę zawierającą pierwszy element.
+- `ex_list[[1]]` zwraca pierwszy element listy, w tym przypadku wektor.
+
+```{r}
+# wywoływanie
+ex_list$e
+
+ex_list[1:2]
+ex_list[1]
+ex_list[[1]]
+ex_list[c("e", "a")]
+ex_list["e"]
+ex_list[["e"]]
+
+ex_list$d
+ex_list$d(arg = 1)
+```
+
+#### Zadanie 4
+
+1. Skopiuj i wklej powyższy kod z `ex_list` do swojej sesji R. Pamiętaj, że `lista` może zawierać dowolny obiekt `R`. Jak... kolejna lista! Utwórz więc nową listę „nowa_lista”, która ma dwa pola: pierwsze pole o nazwie „this” z zawartością „jest niesamowite” i drugie pole o nazwie „ex_list”, które zawiera „ex_list”.
+1. Dostęp do elementów odbywa się jak na zwykłej liście, tylko z kilkoma warstwami. Pobierz element `c` z `ex_list` w `nowa_lista`!
+1. Utwórz nowy wyraz z pierwszego elementu w `nowa_lista', elementu pod etykietą `this`. Użyj funkcji „paste”, aby wydrukować na ekranie „R jest niesamowity”.
+
+
+## Ramki Danych - Data Frames {#dataframes}
+
+Kiedy wprowadziliśmy „R”, widzieliśmy już wektory i macierze do przechowywania danych. W tym kursie przedstawimy teraz **ramkę danych**, która będzie najpopularniejszym sposobem przechowywania danych i interakcji z nimi. „Data.frame” jest podobna do „pandas.dataframe” w Pythonie lub Julii „DataFrame”. (Ale wersja `R` była pierwsza! )
+
+
+```{r}
+example_data = data.frame(x = c(1, 3, 5, 7, 9, 1, 3, 5, 7, 9),
+                          y = c(rep("Hello", 9), "Goodbye"),
+                          z = rep(c(TRUE, FALSE), 5))
+```
+
+W przeciwieństwie do macierzy, którą można traktować jako wektor podzielony na wiersze i kolumny, ramka danych nie musi mieć tego samego typu danych dla każdego elementu. Ramka danych to **lista** wektorów, a każdy wektor ma *nazwę*. Zatem każdy wektor musi zawierać ten sam typ danych, ale różne wektory mogą przechowywać różne typy danych. Należy jednak pamiętać, że wszystkie wektory muszą mieć **tę samą długość** (w odróżnieniu od `listy`)!
+
+```{block, type="tip"}
+**data.frame** jest podobna do typowego arkusza kalkulacyjnego. Są *wiersze* i *kolumny*. Wiersz jest zwykle uważany za *obserwację*, a każda kolumna jest określoną *zmienną*, *cechą* lub *cechą* tej obserwacji.
+```
+
+<br>
+Spójrzmy na ramkę danych, którą właśnie utworzyliśmy powyżej:
+  
+```{r}
+example_data
+```
+
+W przeciwieństwie do listy, która ma większą elastyczność, wszystkie elementy ramki danych muszą być wektorami. Ponownie uzyskujemy dostęp do dowolnej kolumny za pomocą operatora `$`:
+  
+```{r}
+example_data$x
+
+all.equal(length(example_data$x),
+          length(example_data$y),
+          length(example_data$z))
+
+str(example_data)
+
+nrow(example_data)
+ncol(example_data)
+dim(example_data)
+names(example_data)
+```
+
+
+### Praca z `data.frames`
+
+Powyższa funkcja `data.frame()` to jeden ze sposobów tworzenia ramki danych. Możemy także importować dane z różnych typów plików do `R`, a także korzystać z danych przechowywanych w pakietach.
+
+```{r, echo = FALSE}
+write.csv(example_data, "example-data.csv", row.names = FALSE)
+write.csv(example_data,"example-data.csv", row.names=FALSE)
+```
+
+Aby wczytać te dane z powrotem do `R`, użyjemy wbudowanej funkcji `read.csv`:
+
+```{r, message = FALSE, warning = FALSE}
+example_data_from_disk = read.csv("example-data.csv")
+```
+
+Ta konkretna linia kodu zakłada, że zainstalowałeś powiązany pakiet R z tą książką, dlatego masz ten zestaw danych przechowywany na swoim komputerze w `system.file(package = "ScPoEconometrics","datasets","example-data.csv") `.
+
+#```{r}
+#example_data_from_disk
+#```
+
+Korzystając z danych, zazwyczaj chcielibyśmy zrobić trzy rzeczy:
+  
+- Spójrzeć na surowe dane.
+- Zrozumieć dane. (Skąd to się wzięło? Jakie są zmienne? Itp.)
+- Zwizualiować dane.
+
+Aby przeglądać dane w `data.frame`, mamy dwa przydatne polecenia: `head()` i `str()`.
+
+```{r}
+# pracujemy z wbudowanym zbiorem danych mtcars:
+mtcars
+```
+
+Możesz zobaczyć, że to drukuje całą ramkę danych na ekranie. Funkcja `head()` wyświetli pierwsze `n` obserwacji ramki danych. 
+
+```{r}
+head(mtcars,n=2)
+head(mtcars) # default
+```
+
+Funkcja `str()` wyświetli „strukturę” ramki danych. Wyświetli liczbę **obserwacji** i **zmiennych**, wylistuje zmienne, poda typ każdej zmiennej i pokaże niektóre elementy każdej zmiennej. Informacje te można znaleźć także w oknie „Środowisko” w RStudio.
+
+```{r}
+str(mtcars)
+```
+
+W tym zbiorze danych obserwacja dotyczy konkretnego modelu samochodu, a zmienne opisują cechy samochodu, na przykład jego zużycie paliwa lub masę.
+
+Aby lepiej zrozumieć zbiór danych, używamy operatora „?”, aby wyświetlić dokumentację danych.
+
+```{r, eval = FALSE}
+?mtcars
+```
+
+`R` posiada szereg funkcji umożliwiających szybką pracę i wydobywanie podstawowych informacji z ramek danych. Aby szybko uzyskać wektor nazw zmiennych, używamy funkcji `names()`.
+
+```{r}
+names(mtcars)
+```
+
+Aby uzyskać dostęp do jednej ze zmiennych **jako wektora**, używamy operatora `$`.
+
+```{r}
+mtcars$mpg
+mtcars$wt
+```
+
+Do uzyskania informacji o wymiarach ramki danych możemy użyć funkcji `dim()`, `nrow()` i `ncol()`.
+
+```{r}
+dim(mtcars)
+nrow(mtcars)
+ncol(mtcars)
+```
+
+Tutaj „nrow()” to także liczba obserwacji, która w większości przypadków jest *wielkością próby*.
+
+Wywoływanie ramek danych może działać podobnie jak wywoływanie macierzy za pomocą nawiasów kwadratowych, `[ , ]`. Tutaj znajdujemy pojazdy o mpg powyżej 25 mil na galon i wyświetlamy tylko kolumny „cyl”, „disp” i „wt”.
+
+```{r}
+# mpg[rząd warunek, kolumna warunek]
+mtcars[mtcars$mpg > 20, c("cyl", "disp", "wt")]
+```
+
+Tutaj „nrow()” to także liczba obserwacji, która w większości przypadków jest *wielkością próby*.
+
+Alternatywą byłoby użycie funkcji „subset()”, która ma znacznie bardziej czytelną składnię.
+
+```{r, eval = FALSE}
+subset(mtcars, subset = mpg > 25, select = c("cyl", "disp", "wt"))
+```
+
+#### Zadanie 5
+
+1.Ile obserwacji jest w `mtcars`?
+  1. Ile zmiennych?
+  1. Jaka jest średnia wartość `mpg`?
+  1. Jaka jest średnia wartość `mpg` dla samochodów mających więcej niż 4 cylindry, czyli z `cyl>4`?
+  
+## Podstawy Programowania
+  
+W tej sekcji zilustrujemy kilka ogólnych pojęć związanych z programowaniem.
+
+### Zmienne
+
+Z terminem *zmienna* spotkaliśmy się już kilkukrotnie, ale głównie w kontekście kolumny ramki danych. W programowaniu zmienna oznacza *obiekt*. Można to powiedzieć inaczej, mówiąc, że zmienna jest nazwą lub *etykietą* czegoś:
+
+```{r}
+x = 1
+y = "roses"
+z = function(x){sqrt(x)}
+```
+
+Tutaj `x` odnosi się do wartości `1`, `y` zawiera ciąg „róże”, a `z` to nazwa funkcji, która oblicza $\sqrt{x}$. Zauważ, że argument „x” funkcji różni się od argumentu „x”, który właśnie zdefiniowaliśmy. Jest **lokalny** dla funkcji:
+  
+```{r}
+x
+z(9)
+```
+
+### Control Flow
+
+Przepływ kontroli odnosi się do sposobów dostosowywania kodu do różnych okoliczności. Opierając się na tym, że „warunek” ma wartość „PRAWDA”, Twój program wykona jedną rzecz, a nie inną. Jest to najbardziej znane jako instrukcja „if/else”. W `R` składnia if/else wygląda następująco:
+  
+```{r, eval = FALSE}
+if (condition = TRUE) {
+  some R code
+} else {
+  some other R code
+}
+```
+
+Na przykład,
+
+```{r}
+x = 1
+y = 3
+if (x > y) {  # test if x > y
+  # if TRUE
+  z = x * y
+  print("x większe y")
+} else {
+  # if FALSE
+  z = x + 5 * y
+  print("x mniejsze równe y")
+}
+
+z
+```
+
+
+### Pętle
+
+Pętle są bardzo ważnym narzedziem programistycznym. Jak sama nazwa wskazuje, w *pętli*, program *wielokrotnie* wykonuje pętlę po zestawie instrukcji, dopóki jakiś warunek nie każe mu się zatrzymać. Bardzo potężna, a jednocześnie prosta konstrukcja polega na tym, że program może *policzyć, ile kroków* już wykonał - co może być ważne w przypadku wielu algorytmów. Składnia pętli „for” (są inne) jest następująca
+
+```{r eval=FALSE}
+for (ix in 1:10){   # does not have to be 1:10!
+  # loop body: gets executed each time
+  # the value of ix changes with each iteration
+}
+```
+
+Rozważmy na przykład prostą pętlę „for”, która po prostu wypisze na ekranie wartość *iteratora* (w tym przypadku zwanego „i”):
+  
+```{r}
+for (i in 1:5){
+  print(i)
+}
+```
+
+Zauważ, że zamiast `1:5` moglibyśmy mieć *dowolny* rodzaj iterowalnej kolekcji:
+  
+```{r}
+for (i in c("mango","banany","jabłka")){
+  print(paste("Uwielbiam ",i))  # the paste function pastes together strings
+}
+```
+
+Często widzimy także *zagnieżdżone* pętle, co sugeruje ich nazwa:
+
+```{r}
+for (i in 2:3){
+  # pierwsze zagnieżdżenie: dla każdego i
+  for (j in c("mango","banany","jabłka")){
+    # drugir zagnieżdżenie: dla każdego j
+    print(paste("Poproszę",i,j,"?"))
+  }
+}
+```
+
+Należy tu zauważyć, że obliczenia można wykonywać za pomocą iteratorów *będąc wewnątrz pętli*.
+
+### Funkcje
+
+Do tej pory korzystaliśmy z funkcji, ale tak naprawdę nie omawialiśmy niektórych ich szczegółów. Funkcja to zestaw instrukcji, które wykonuje dla nas „R”, podobnie jak te zebrane w pliku skryptu. Dobrą rzeczą jest to, że funkcje są znacznie bardziej elastyczne niż skrypty, ponieważ mogą zależeć od *argumentów wejściowych*, które zmieniają sposób zachowania funkcji. Oto jak zdefiniować funkcję:
+
+```{r eval=FALSE}
+function_name <- function(arg1,arg2=wartosc_domyslna){
+  # function body
+  # you do stuff with arg1 and arg2
+  # you can have any number of arguments, with or without defaults
+  # any valid `R` commands can be included here
+  # the last line is returned
+}
+```
+
+A oto trywialny przykład definicji funkcji:
+
+```{r}
+witaj <- function(imie = "Lord Vader"){
+  paste("Witaj,",imie)
+  # we could also write:
+  # return(paste("Wiatj",imie))
+}
+
+# we call the function by typing it's name with round brackets
+witaj()
+```
+Widzisz, że jeśli nie określisz argumentu „twoje_imię”, „R” powraca do podanej wartości domyślnej. Wypróbuj teraz pod własnym imieniem!
+  
+  Samo wpisanie nazwy funkcji zwraca nam rzeczywistą definicję, co czasami jest przydatne:
+  
+```{r}
+witaj
+```
+
+Warto wziąć pod uwagę, że zanim zdefiniowaliśmy powyżej funkcję „witaj”, „R” nie wiedział, co zrobić, jeśli wywołałeś funkcję „hello()”. Funkcja nie istniała! W tym sensie *nauczyliśmy „R” nowej sztuczki*. Ta funkcja tworzenia nowych możliwości poza językiem podstawowym jest jedną z najpotężniejszych cech języków programowania. Ogólnie rzecz biorąc, dobrą praktyką jest dzielenie kodu na kilka mniejszych funkcji zamiast jednego długiego pliku skryptu. Dzięki temu Twój kod będzie bardziej czytelny i łatwiej będzie wyśledzić błędy.
+
+
+#### Task 6
+
+1. Napisz pętlę for, która odlicza od 10 do 1 i wypisuje na ekranie wartość iteratora.
+1. Zmodyfikuj tę pętlę, aby zapisać „i iteracje do wykonania”, gdzie „i” jest iteratorem
+1. Zmodyfikuj tę pętlę tak, aby każda iteracja trwała około jednej sekundy. Można to osiągnąć dodając polecenie `Sys.sleep(1)` pod linią wyświetlającą "i iteracji do wykonania".
+
+
+warnings()

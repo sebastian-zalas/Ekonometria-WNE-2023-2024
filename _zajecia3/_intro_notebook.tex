@@ -1,0 +1,2517 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Rintro},
+  pdfauthor={Sebastian Zalas},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Rintro}
+\author{Sebastian Zalas}
+\date{2023-10-18}
+
+\begin{document}
+\maketitle
+
+\hypertarget{R-intro}{%
+\section{\texorpdfstring{Wprowadzenie do
+\texttt{R}}{Wprowadzenie do R}}\label{R-intro}}
+
+setwd('C:/Users/alter-ego/OneDrive/\_ekonometria2023/\_3\_rintro')
+
+\hypertarget{zaczynamy}{%
+\subsection{Zaczynamy!}\label{zaczynamy}}
+
+\texttt{R} jest zarówno językiem programowania jak i pakietem
+statystycznym, który jest \emph{open-source}. Aby zacząć go używać,
+należy zainstalować 2 programy:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \href{https://www.r-project.org}{\texttt{R}, właściwy język
+  programowania.} - Wybierz właściwy system operacyjny oraz najnowszą
+  wersję. - Chose your operating system, and select the most recent
+  version.
+\item
+  \href{http://www.rstudio.com/}{RStudio, IDE - czyli program służący do
+  tworzenia oprogramowania w \texttt{R}.} - Zauważ że musisz mieć
+  zainstalowany \texttt{R} aby używać RStudio. RStudio to po prostu
+  interfejs stosowany do używania \texttt{R}.
+\end{enumerate}
+
+\hypertarget{r-jest-szeroko-uzywanym-programem-do-analiz-statystyczych.}{%
+\section{\texorpdfstring{\texttt{R} jest szeroko uzywanym programem do
+analiz
+statystyczych.}{R jest szeroko uzywanym programem do analiz statystyczych.}}\label{r-jest-szeroko-uzywanym-programem-do-analiz-statystyczych.}}
+
+Kilka następnych rozdziałów będzie burzliwym wprowadzeniem do „R''. W
+żadnym wypadku nie mają one stanowić kompletnego odniesienia do języka
+„R'', ale po prostu wprowadzenie do podstaw, które będą nam potrzebne po
+drodze. Kilka ważniejszych tematów zostanie ponownie podkreślonych,
+ponieważ są one faktycznie potrzebne do analiz.
+
+Ten wprowadzający rozdział „R'' może wydawać się przytłaczającą ilością
+informacji. Nie oczekuje się, że opanujesz wszystko za pierwszym razem.
+Powinieneś wypróbować cały kod z tego rozdziału, a następnie wracać do
+niego kilka razy, gdy będziesz wracać do koncepcji podczas
+przeprowadzania analiz. Przedstawiamy tylko najbardziej podstawowe
+aspekty \texttt{R}. Jeśli chcesz dowiedzieć się więcej, istnieje
+niezliczona ilość samouczków online i możesz zacząć od oficjalnego
+\href{https://cran.r-project.org/doc/manuals/r-release/R-intro.html\#A-sample-session}{CRAN
+sample session}lub przejrzyj zasoby na stronie
+\href{https://www.rstudio.com/online-learning/\#DataScience}{Rstudio}
+lub na tej \href{https://github.com/qinwf/awesome-R}{github repo}.
+
+\hypertarget{starting-r-and-rstudio}{%
+\subsection{Starting R and RStudio}\label{starting-r-and-rstudio}}
+
+Kluczową różnicą, którą powinieneś zrozumieć, jest różnica pomiędzy
+\texttt{R}, rzeczywistym językiem programowania, a \texttt{RStudio},
+popularnym interfejsem \texttt{R}, który pozwala wydajnie i łatwiej
+pracować z \texttt{R}.
+
+Najlepszym sposobem na docenienie wartości \texttt{RStudio} jest
+rozpoczęcie używania \texttt{R} \emph{bez} \texttt{RStudio}. Aby to
+zrobić, kliknij dwukrotnie interfejs GUI R, który powinieneś pobrać na
+swój komputer, wykonując powyższe kroki (w systemie Windows lub Mac) lub
+uruchom R w terminalu (w systemie Linux lub Mac), wpisując po prostu
+„R'' w polu terminala.Właśnie otworzyłeś konsolę R \textbf{konsolę},
+która pozwala rozpocząć wpisywanie kodu zaraz po znaku
+\texttt{\textgreater{}}, zwaną \emph{podpowiedź}. Spróbuj wpisać
+\texttt{2\ +\ 2} lub \texttt{print("Twoje\ imię")} i naciśnij klawisz
+Return. I \emph{voilà}, Twoje pierwsze polecenia R!
+
+Wpisywanie w konsoli jednego polecenia po drugim nie jest zbyt wygodne,
+ponieważ nasza analiza staje się bardziej skomplikowana. Idealnie
+byłoby, gdybyśmy zebrali wszystkie instrukcje poleceń w pliku i
+uruchamiali je jedna po drugiej, automatycznie. Możemy to zrobić pisząc
+tzw. \textbf{pliki skryptów} lub po prostu \textbf{skrypty}, czyli
+proste pliki tekstowe z rozszerzeniem \texttt{.R} lub \texttt{.r}, które
+można \emph{wstawić} (lub \emph{pobrać}) w sesję „R''. RStudio bardzo
+ułatwia ten proces.
+
+Otwórz \texttt{RStudio}, klikając aplikację \texttt{RStudio} na swoim
+komputerze i zwróć uwagę, jak całe środowisko różni się od podstawowej
+konsoli \texttt{R} - tak naprawdę ta \emph{taka sama} konsola \texttt{R}
+działa w lewym dolnym rogu płyta. Lewy górny panel to miejsce, w którym
+możesz pisać skrypty -- czyli wiele linii kodu, które możesz uruchamiać,
+kiedy tylko chcesz. Aby uruchomić pojedynczą linię kodu, po prostu
+zaznacz ją i naciśnij \texttt{Command} + \texttt{Return}.
+
+RStudio ma dużą liczbę przydatnych skrótów klawiaturowych. Listę z nich
+można znaleźć za pomocą skrótu klawiaturowego --- skrótu klawiaturowego,
+który pozwala rządzić nimi wszystkimi:
+
+\begin{itemize}
+\tightlist
+\item
+  W systemie Windows: \texttt{Alt} + \texttt{Shift} + \texttt{K}
+\item
+  Na Macu: \texttt{Opcja} + \texttt{Shift} + \texttt{K}
+\end{itemize}
+
+Zespół \texttt{RStudio} opracował {[}wiele „ściągawek''{]}
+(\url{https://www.rstudio.com/resources/cheatsheets/}) do pracy zarówno
+z \texttt{R}, jak i \texttt{RStudio}.
+\href{http://www.rstudio.com/wp-content/uploads/2016/05/base-r.pdf}{Ten
+konkretny kod do Base \texttt{R}} podsumowuje wiele koncepcji zawartych
+w tym dokumencie. \footnote{Podczas programowania często dobrą praktyką
+  jest przestrzeganie przewodnika po stylu. (Gdzie trafiają spacje?
+  Tabulatory czy spacje? Podkreślenia lub CamelCase podczas nazywania
+  zmiennych?) Żaden przewodnik po stylu nie jest „poprawny'', ale pomaga
+  być świadomym tego, co robią inni. Ważniejszą rzeczą jest zachowanie
+  spójności w obrębie własnego kodu. Oto dwa przewodniki:
+  \href{http://adv-r.had.co.nz/Style.html}{Przewodnik po stylu Hadley
+  Wickham} i
+  \href{https://google.github.io/styleguide\%20/Rguide.xml}{Przewodnik
+  po stylu Google}. W tym kursie naszym głównym odstępstwem od tych
+  dwóch wskazówek jest użycie \texttt{=} zamiast \texttt{\textless{}-}.
+  Ze względów praktycznych powinieneś pomyśleć \texttt{=} za każdym
+  razem, gdy zobaczysz \texttt{\textless{}-}.}
+
+\hypertarget{podstawowe-pojux119cia}{%
+\subsubsection{Podstawowe pojęcia}\label{podstawowe-pojux119cia}}
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{R}: pakiet statystyczny
+\item
+  \texttt{RStudio}: \emph{integrated development environment (IDE)},
+  interfejs do pracy z \texttt{R}
+\item
+  \emph{komenda}: polecenia (tekst lub liczby) które \texttt{R}
+  \emph{rozumie}.
+\item
+  \emph{skrypt}: lista poleceń zebranych w pliku tekstowym, każda
+  oddzielona nową linią, do uruchomienia jedna po drugiej.
+\end{itemize}
+
+\hypertarget{podstawowe-obliczenia}{%
+\subsection{Podstawowe obliczenia}\label{podstawowe-obliczenia}}
+
+Na początek użyjemy „R'' jak prostego kalkulatora. Uruchom następujący
+kod bezpośrednio z konsoli RStudio lub w RStudio, zapisując go w
+skrypcie i uruchamiając za pomocą „Polecenie'' + „Return''.
+
+\hypertarget{dodawanie-odejmowanie-mnoux17cenie-i-dzielenie}{%
+\paragraph*{Dodawanie, odejmowanie, mnożenie i
+dzielenie}\label{dodawanie-odejmowanie-mnoux17cenie-i-dzielenie}}
+\addcontentsline{toc}{paragraph}{Dodawanie, odejmowanie, mnożenie i
+dzielenie}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Math & \texttt{R} code & Result \\
+\midrule
+\endhead
+\(3 + 2\) & \texttt{3\ +\ 2} & 5 \\
+\(3 - 2\) & \texttt{3\ -\ 2} & 1 \\
+\(3 \cdot2\) & \texttt{3\ *\ 2} & 6 \\
+\(3 / 2\) & \texttt{3\ /\ 2} & 1.5 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{potux119gowanie}{%
+\paragraph*{Potęgowanie}\label{potux119gowanie}}
+\addcontentsline{toc}{paragraph}{Potęgowanie}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Math & \texttt{R} code & Result \\
+\midrule
+\endhead
+\(3^2\) & \texttt{3\ \^{}\ 2} & 9 \\
+\(2^{(-3)}\) & \texttt{2\ \^{}\ (-3)} & 0.125 \\
+\(100^{1/2}\) & \texttt{100\ \^{}\ (1\ /\ 2)} & 10 \\
+\(\sqrt{100}\) & \texttt{sqrt(100)} & 10 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{staux142e-matematyczne}{%
+\paragraph*{Stałe matematyczne}\label{staux142e-matematyczne}}
+\addcontentsline{toc}{paragraph}{Stałe matematyczne}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Math & \texttt{R} code & Result \\
+\midrule
+\endhead
+\(\pi\) & \texttt{pi} & 3.1415927 \\
+\(e\) & \texttt{exp(1)} & 2.7182818 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{logarytmy}{%
+\paragraph*{Logarytmy}\label{logarytmy}}
+\addcontentsline{toc}{paragraph}{Logarytmy}
+
+Zauważ, że będziemy używać zamiennie \(\ln\) i \(\log\), aby oznaczać
+logarytm naturalny. W \texttt{R} nie ma \texttt{ln()}, zamiast tego
+używa \texttt{log()} do oznaczenia logarytmu naturalnego.
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Math & \texttt{R} code & Result \\
+\midrule
+\endhead
+\(\log(e)\) & \texttt{log(exp(1))} & 1 \\
+\(\log_{10}(1000)\) & \texttt{log10(1000)} & 3 \\
+\(\log_{2}(8)\) & \texttt{log2(8)} & 3 \\
+\(\log_{4}(16)\) & \texttt{log(16,\ base\ =\ 4)} & 2 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{trigonometry}{%
+\paragraph*{Trigonometry}\label{trigonometry}}
+\addcontentsline{toc}{paragraph}{Trigonometry}
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Math & \texttt{R} code & Result \\
+\midrule
+\endhead
+\(\sin(\pi / 2)\) & \texttt{sin(pi\ /\ 2)} & 1 \\
+\(\cos(0)\) & \texttt{cos(0)} & 1 \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{jak-uzyskaux107-pomoc}{%
+\subsection{Jak uzyskać pomoc?}\label{jak-uzyskaux107-pomoc}}
+
+Używając \texttt{R} jako kalkulatora, widzieliśmy wiele funkcji:
+\texttt{sqrt()}, \texttt{exp()}, \texttt{log()} i \texttt{sin()}. Aby
+uzyskać dokumentację dotyczącą funkcji w \texttt{R}, po prostu wstaw
+znak zapytania przed nazwą funkcji lub wywołaj funkcję
+\texttt{help(funkcja)}, a RStudio wyświetli dokumentację, na przykład:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?log}
+\NormalTok{?sin}
+\NormalTok{?paste}
+\NormalTok{?lm}
+\FunctionTok{help}\NormalTok{(lm)   }\CommentTok{\# help() is equivalent}
+\FunctionTok{help}\NormalTok{(ggplot,}\AttributeTok{package=}\StringTok{"ggplot2"}\NormalTok{)  }\CommentTok{\# show help from a certain package}
+\end{Highlighting}
+\end{Shaded}
+
+Często jedną z najtrudniejszych rzeczy do zrobienia podczas nauki „R''
+jest poproszenie o pomoc. Najpierw musisz zdecydować się poprosić o
+pomoc, a następnie musisz wiedzieć \emph{jak} poprosić o pomoc. Pierwszą
+linią obrony powinien być przekazany Google komunikat o błędzie lub
+krótki opis problemu. (Umiejętność rozwiązywania problemów za pomocą tej
+metody szybko staje się niezwykle cenną umiejętnością.) Jeśli to
+zawiedzie, a w końcu tak się stanie, powinieneś poprosić o pomoc. Jest
+wiele rzeczy, które powinieneś uwzględnić, kontaktując się z
+instruktorem lub publikując post na stronie pomocy, takiej jak {[}Stack
+Overflow{]} (\url{https://stackoverflow.com}).
+
+\begin{itemize}
+\tightlist
+\item
+  Opisz, czego oczekujesz od kodu.
+\item
+  Podaj ostateczny cel, który chcesz osiągnąć. (Czasami to, czego
+  oczekujesz od kodu, nie jest tym, co chcesz faktycznie zrobić.)
+\item
+  Podaj pełny tekst wszelkich otrzymanych błędów. --- Podaj
+  wystarczającą ilość kodu, aby odtworzyć błąd. Często na potrzeby tego
+  kursu możesz po prostu opublikować cały skrypt \texttt{.R} lub
+  \texttt{.Rmd} w \texttt{slack}.
+\item
+  Czasami pomocne jest również dołączenie zrzutu ekranu całego okna
+  RStudio, gdy wystąpi błąd.
+\end{itemize}
+
+Jeśli wykonasz te kroki, problem zostanie rozwiązany znacznie szybciej,
+a przy okazji prawdopodobnie dowiesz się więcej. Nie zniechęcaj się,
+jeśli napotkasz błędy i trudności podczas nauki \texttt{R}. (Lub
+jakakolwiek inna umiejętność techniczna.) Jest to po prostu część
+procesu uczenia się.
+
+\hypertarget{instalowanie-pakietuxf3w}{%
+\subsection{Instalowanie pakietów}\label{instalowanie-pakietuxf3w}}
+
+\texttt{R} ma wiele wbudowanych funkcji i zbiorów danych, ale jedną z
+głównych zalet \texttt{R} jako projektu open source jest system
+pakietów. Pakiety dodają dodatkowe funkcje i dane. Często, jeśli chcesz
+coś zrobić w \texttt{R}, a nie jest to domyślnie dostępne, istnieje duża
+szansa, że istnieje pakiet, który spełni Twoje potrzeby.
+
+Aby zainstalować pakiet, użyj funkcji \texttt{install.packages()}.
+Pomyśl o tym jak o zakupie książki kucharskiej w sklepie, zabraniu jej
+do domu i umieszczeniu na półce (tj. w bibliotece):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{install.packages}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Po zainstalowaniu pakietu należy go załadować do bieżącej sesji
+\texttt{R}, zanim będzie można go użyć. Potraktuj to jak zdjęcie książki
+z półki i otwarcie jej do przeczytania.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+Po zamknięciu „R'' wszystkie opakowania zostaną zamknięte i odłożone na
+wyimaginowaną półkę. Następnym razem, gdy otworzysz \texttt{R}, nie
+musisz ponownie instalować pakietu, ale musisz załadować wszystkie
+pakiety, których zamierzasz używać, wywołując \texttt{library()}.
+
+\hypertarget{code-output}{%
+\subsection{„Kod'' a dane wyjściowe w tym
+dokumencie}\label{code-output}}
+
+Wszystkie linie wyjściowe są poprzedzone znakiem „\#\#'', aby umożliwić
+rozróżnienie. Typowy fragment kodu z danymi wyjściowymi będzie zatem
+wyglądać następująco:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1} \SpecialCharTok{+} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# everything after a \# is a comment, i.e. R disregards it.}
+\end{Highlighting}
+\end{Shaded}
+
+gdzie w pierwszej linii widzisz kod \texttt{R}, a w drugiej linii wynik.
+Jak wspomniano, linia ta zaczyna się od \texttt{\#\#} oznaczającego
+\emph{to jest wyjście}, po którym następuje \texttt{{[}1{]}}
+(wskazujące, że jest to wektor o długości \emph{jeden} - więcej na ten
+temat poniżej!), po którym następuje rzeczywista wartość wynik -
+\texttt{1\ +\ 3\ =\ 4}!
+
+Zauważ, że możesz po prostu skopiować i wkleić cały widoczny kod do
+konsoli „R''. Tak naprawdę jesteś \emph{zdecydowanie} zachęcany do
+zrobienia tego i wypróbowania \textbf{całego kodu}, który widzisz w tej
+książce.
+
+Na koniec należy pamiętać, że ten sposób wyświetlania wyników jest w
+pełni naszym wyborem w tym podręczniku i że innych formatów wyjściowych
+należy spodziewać się gdzie indziej. Na przykład w mojej konsoli
+„RStudio'' powyższy kod i dane wyjściowe wyglądają następująco:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\SpecialCharTok{\textgreater{}} \DecValTok{1} \SpecialCharTok{+} \DecValTok{3}
+\NormalTok{[}\DecValTok{1}\NormalTok{] }\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{data-types}{%
+\subsection{Typy danych}\label{data-types}}
+
+\texttt{R} ma kilka podstawowych \emph{typów danych}. Chociaż \texttt{R}
+nie jest \emph{językiem o silnie typowanym typie} (tj. w większości
+przypadków możesz mieć agnostyka w stosunku do typów), warto wiedzieć,
+jakie typy danych są dla ciebie dostępne:
+
+\begin{itemize}
+\tightlist
+\item
+  Numeric
+
+  \begin{itemize}
+  \tightlist
+  \item
+    również znany jako Double. Domyślny typ w przypadku liczb.
+  \item
+    Przykład: \texttt{1}, \texttt{1.0}, \texttt{42.5}
+  \end{itemize}
+\item
+  Integer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Przykład: \texttt{1L}, \texttt{2L}, \texttt{42L}
+  \end{itemize}
+\item
+  Complex
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Przykład: \texttt{4\ +\ 2i}
+  \end{itemize}
+\item
+  Logical
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Dwie możliwe wartości: \texttt{TRUE} and \texttt{FALSE}
+  \item
+    Można również używać \texttt{T} oraz \texttt{F}, ale to \emph{nie}
+    jest wskazane.
+  \item
+    \texttt{NA} jest również wartością logiczną.
+  \end{itemize}
+\item
+  Character
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Przykład: \texttt{"a"}, \texttt{"Statistics"},
+    \texttt{"1\ plus\ 2."}
+  \end{itemize}
+\item
+  Kategoryczne lub \texttt{factor}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Miks integer oraz character. Zmienna typu \texttt{factor} przypisuje
+    etykietę do wartości liczbowej.
+  \item
+    Na przykład \texttt{factor(x=c(0,1),labels=c("male","female"))}
+    przypisuje słowo \emph{male} do wartości liczbowych \texttt{0}, a
+    słowo \emph{female} do wartości „1''.
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{struktury-danych}{%
+\subsection{Struktury danych}\label{struktury-danych}}
+
+\texttt{R} ma także kilka podstawowych \emph{struktur} danych. Struktura
+danych jest albo jednorodna (wszystkie elementy są tego samego typu
+danych), albo heterogeniczna (elementy mogą należeć do więcej niż
+jednego typu danych).
+
+\begin{longtable}[]{@{}ccc@{}}
+\toprule
+Wymiar & \textbf{Homogeniczna} & \textbf{Heterogeniczna} \\
+\midrule
+\endhead
+1 & Vector & List \\
+2 & Matrix & Data Frame \\
+3+ & Array & nested Lists \\
+\bottomrule
+\end{longtable}
+
+\hypertarget{wektory-vectors}{%
+\subsubsection{Wektory (Vectors)}\label{wektory-vectors}}
+
+Wiele operacji w \texttt{R} w dużym stopniu wykorzystuje
+\textbf{wektory}. Wektor jest \emph{pojemnikiem} na obiekty identycznego
+typu (patrz @ref(data-types) powyżej). Wektory w \texttt{R} są
+indeksowane począwszy od \texttt{1}. To właśnie wskazuje „{[}1{]}'' na
+wyjściu, że pierwszy element wyświetlanego wiersza jest pierwszym
+elementem wektora. Większe wektory będą rozpoczynać dodatkowe wiersze od
+czegoś w rodzaju „{[}7{]}'', gdzie „7'' jest indeksem pierwszego
+elementu tego wiersza.
+
+Prawdopodobnie najczęstszym sposobem tworzenia wektora w „R'' jest
+użycie funkcji „c()'', która jest skrótem od „połącz''. Jak sama nazwa
+wskazuje, łączy w sobie listę elementów oddzielonych przecinkami. (Czy
+jesteś zajęty wpisywaniem wszystkich tych przykładów w konsoli „R''? :-)
+)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 5 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 5 5
+\end{verbatim}
+
+Tutaj „R'' po prostu wyprowadza ten wektor. Jeśli chcielibyśmy zapisać
+ten wektor w \textbf{zmiennej}, możemy to zrobić za pomocą operatora
+\textbf{przypisania} \texttt{=}. W tym przypadku zmienna „x''
+przechowuje teraz właśnie utworzony wektor i możemy uzyskać dostęp do
+wektora, wpisując „x''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 5 7 8 9
+\end{verbatim}
+
+Na marginesie, operator przypisania w \texttt{R} ma długą historię,
+częściowo za sprawą klawiszy dostępnych na
+\href{https://twitter.com/kwbroman/\%20status/747829864091127809}{klawiaturach
+twórców języka \texttt{S}.} (który poprzedzał \texttt{R}.) Dla
+uproszczenia użyjemy \texttt{=}, ale pamiętaj, że często zobaczysz
+\texttt{\textless{}-} jako operator przypisania.
+
+Ponieważ wektory muszą zawierać elementy tego samego typu, „R''
+automatycznie \textbf{wymusi} (tj. skonwertuje) na jeden typ podczas
+próby utworzenia wektora łączącego wiele typów.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{42}\NormalTok{, }\StringTok{"Statistics"}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "42"         "Statistics" "TRUE"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(}\DecValTok{42}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 42  1
+\end{verbatim}
+
+Często możesz chcieć utworzyć wektor w oparciu o sekwencję liczb.
+Najszybciej i najłatwiej to zrobić za pomocą operatora \texttt{:}, który
+tworzy sekwencję liczb całkowitych pomiędzy dwiema określonymi liczbami
+całkowitymi.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\AttributeTok{y =} \DecValTok{1}\SpecialCharTok{:}\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [1]   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18
+##  [19]  19  20  21  22  23  24  25  26  27  28  29  30  31  32  33  34  35  36
+##  [37]  37  38  39  40  41  42  43  44  45  46  47  48  49  50  51  52  53  54
+##  [55]  55  56  57  58  59  60  61  62  63  64  65  66  67  68  69  70  71  72
+##  [73]  73  74  75  76  77  78  79  80  81  82  83  84  85  86  87  88  89  90
+##  [91]  91  92  93  94  95  96  97  98  99 100
+\end{verbatim}
+
+Tutaj widzimy „R'' oznaczający wiersze po pierwszym, ponieważ jest to
+duży wektor. Widzimy także, że umieszczając przypisanie w nawiasach,
+„R'' przechowuje wektor w zmiennej zwanej „y'' i automatycznie wysyła
+„y'' do konsoli.
+
+Zauważ, że skalary nie istnieją w \texttt{R}. Są to po prostu wektory o
+długości „1''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2
+\end{verbatim}
+
+Jeśli chcemy utworzyć sekwencję, która nie jest ograniczona do liczb
+całkowitych i zwiększa się o 1 na raz, możemy użyć funkcji
+\texttt{seq()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seq}\NormalTok{(}\AttributeTok{from =} \FloatTok{1.5}\NormalTok{, }\AttributeTok{to =} \FloatTok{4.2}\NormalTok{, }\AttributeTok{by =} \FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3
+## [20] 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2
+\end{verbatim}
+
+Funkcje omówimy szczegółowo później, ale zwróć uwagę, że etykiety
+wejściowe „od'', „do'' i „przez'' są opcjonalne.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{seq}\NormalTok{(}\FloatTok{1.5}\NormalTok{, }\FloatTok{4.2}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.5 1.6 1.7 1.8 1.9 2.0 2.1 2.2 2.3 2.4 2.5 2.6 2.7 2.8 2.9 3.0 3.1 3.2 3.3
+## [20] 3.4 3.5 3.6 3.7 3.8 3.9 4.0 4.1 4.2
+\end{verbatim}
+
+Another common operation to create a vector is \texttt{rep()}, which can
+repeat a single value a number of times.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rep}\NormalTok{(}\StringTok{"A"}\NormalTok{, }\AttributeTok{times =} \DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "A" "A" "A" "A" "A" "A" "A" "A" "A" "A"
+\end{verbatim}
+
+Funkcji „rep()'' można użyć do powtórzenia wektora określoną liczbę
+razy.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rep}\NormalTok{(x, }\AttributeTok{times =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 3 5 7 8 9 1 3 5 7 8 9 1 3 5 7 8 9
+\end{verbatim}
+
+Widzieliśmy teraz cztery różne sposoby tworzenia wektorów: -
+\texttt{c()} - \texttt{:} - \texttt{seq()} - \texttt{rep()} Do tej pory
+używaliśmy ich głównie osobno, ale często używa się ich razem.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{c}\NormalTok{(x, }\FunctionTok{rep}\NormalTok{(}\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{2}\NormalTok{), }\DecValTok{3}\NormalTok{), }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DecValTok{42}\NormalTok{, }\DecValTok{2}\SpecialCharTok{:}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  3  5  7  8  9  1  3  5  7  9  1  3  5  7  9  1  3  5  7  9  1  2  3 42
+## [26]  2  3  4
+\end{verbatim}
+
+Długość wektora można uzyskać za pomocą funkcji „length()''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(y)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100
+\end{verbatim}
+
+\begin{warning}
+Wypróbujmy to! \textbf{Twoja kolej}:
+\end{warning}
+
+\hypertarget{zadanie-1}{%
+\paragraph{Zadanie 1}\label{zadanie-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Utwórz wektor pięciu jedynek, czyli: \texttt{{[}1,1,1,1,1{]}}
+\item
+  Zauważ, że operator dwukropka \texttt{a:b} jest skrótem od
+  \emph{konstruuj sekwencję \textbf{od} \texttt{a} \textbf{do}
+  \texttt{b}}. Utwórz wektor, od który będzie odliczał od 10 do 0, czyli
+  będzie wyglądał tak: \texttt{{[}10,9,8,7,6,5,4,3,2,1,0{]}}!
+\item
+  funkcja \texttt{rep} pobiera dodatkowe argumenty \texttt{times} (jak
+  powyżej) i \texttt{each}, które mówią, jak często \emph{każdy element}
+  powinien być powtarzany (w przeciwieństwie do całego wektora
+  wejściowego). Użyj \texttt{rep}, aby utworzyć wektor wyglądający tak:
+  \texttt{{[}1\ 1\ 1\ 2\ 2\ 2\ 3\ 3\ 3\ 1\ 1\ 1\ 2\ 2\ 2\ 3\ 3\ 3{]}}
+\end{enumerate}
+
+\hypertarget{wywoux142ywanie-subsetting}{%
+\paragraph{Wywoływanie (Subsetting)}\label{wywoux142ywanie-subsetting}}
+
+Aby podzielić wektor na podzbiór, czyli wybrać tylko niektóre jego
+elementy, używamy nawiasów kwadratowych „{[}{]}''. Widzimy tutaj, że
+\texttt{x{[}1{]}} zwraca pierwszy element, a \texttt{x{[}3{]}} zwraca
+trzeci element:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 5 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+Możemy też wykluczyć pewne indeksy, w tym przypadku drugi element.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\SpecialCharTok{{-}}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 5 7 8 9
+\end{verbatim}
+
+Na koniec widzimy, że możemy dokonać podzbioru w oparciu o wektor
+indeksów.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 5 7
+\end{verbatim}
+
+Wszystkie powyższe stanowią podzbiór wektora za pomocą wektora indeksów.
+(Pamiętaj, że pojedyncza liczba jest nadal wektorem.) Zamiast tego
+moglibyśmy użyć wektora wartości logicznych.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE  TRUE FALSE  TRUE  TRUE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[z]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 3 7 8
+\end{verbatim}
+
+\texttt{R} może wykonywać wiele operacji zarówno na wektorach, jak i
+skalarach:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}  \CommentTok{\# wektor}
+\NormalTok{x }\SpecialCharTok{+} \DecValTok{1}     \CommentTok{\# dodawanie wektora i skalara}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  2  3  4  5  6  7  8  9 10 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{*}\NormalTok{ x     }\CommentTok{\# pomnóż elementy wektora przez 2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  2  4  6  8 10 12 14 16 18 20
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{2} \SpecialCharTok{\^{}}\NormalTok{ x     }\CommentTok{\# weź 2 do potęgi elementów x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]    2    4    8   16   32   64  128  256  512 1024
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(x)   }\CommentTok{\# oblicz pierwiastek elementów x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.000000 1.414214 1.732051 2.000000 2.236068 2.449490 2.645751 2.828427
+##  [9] 3.000000 3.162278
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{log}\NormalTok{(x)    }\CommentTok{\# logarytm naturalny elementów x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 0.0000000 0.6931472 1.0986123 1.3862944 1.6094379 1.7917595 1.9459101
+##  [8] 2.0794415 2.1972246 2.3025851
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{+} \DecValTok{2}\SpecialCharTok{*}\NormalTok{x   }\CommentTok{\# dodaj wektor x do wektora 2x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  3  6  9 12 15 18 21 24 27 30
+\end{verbatim}
+
+Widzimy, że gdy funkcja taka jak „log()'' jest wywoływana na wektorze
+„x'', zwracany jest wektor, który zastosował tę funkcję do każdego
+elementu wektora „x''.
+
+\hypertarget{operatory-logiczne}{%
+\subsubsection{Operatory logiczne}\label{operatory-logiczne}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1538}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3538}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3538}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1385}}@{}}
+\toprule
+\begin{minipage}[b]{\linewidth}\raggedright
+Operator
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Podsumowanie
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Przykład
+\end{minipage} & \begin{minipage}[b]{\linewidth}\centering
+Wynik
+\end{minipage} \\
+\midrule
+\endhead
+\texttt{x\ \textless{}\ y} & \texttt{x} mniejsze niż \texttt{y} &
+\texttt{3\ \textless{}\ 42} & TRUE \\
+\texttt{x\ \textgreater{}\ y} & \texttt{x} większe niż \texttt{y} &
+\texttt{3\ \textgreater{}\ 42} & FALSE \\
+\texttt{x\ \textless{}=\ y} & \texttt{x} mniejsze równe \texttt{y} &
+\texttt{3\ \textless{}=\ 42} & TRUE \\
+\texttt{x\ \textgreater{}=\ y} & \texttt{x} większe równe \texttt{y} &
+\texttt{3\ \textgreater{}=\ 42} & FALSE \\
+\texttt{x\ ==\ y} & \texttt{x} równe \texttt{y} & \texttt{3\ ==\ 42} &
+FALSE \\
+\texttt{x\ !=\ y} & \texttt{x} nie równe \texttt{y} & \texttt{3\ !=\ 42}
+& TRUE \\
+\texttt{!x} & nie \texttt{x} & \texttt{!(3\ \textgreater{}\ 42)} &
+TRUE \\
+\texttt{x\ \textbar{}\ y} & \texttt{x} lub \texttt{y} &
+\texttt{(3\ \textgreater{}\ 42)\ \textbar{}\ TRUE} & TRUE \\
+\texttt{x\ \&\ y} & \texttt{x} oraz \texttt{y} &
+\texttt{(3\ \textless{}\ 4)\ \&\ (\ 42\ \textgreater{}\ 13)} & TRUE \\
+\bottomrule
+\end{longtable}
+
+W \texttt{R} operatory logiczne działają także na wektorach:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{\textgreater{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE  TRUE  TRUE  TRUE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{\textless{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{==} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{!=} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{==} \DecValTok{3} \SpecialCharTok{\&}\NormalTok{ x }\SpecialCharTok{!=} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE FALSE FALSE FALSE FALSE FALSE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\SpecialCharTok{==} \DecValTok{3} \SpecialCharTok{|}\NormalTok{ x }\SpecialCharTok{!=} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE TRUE TRUE TRUE TRUE TRUE
+\end{verbatim}
+
+Jest to całkiem przydatne w przypadku wywoływania podzbiorów.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[x }\SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[x }\SpecialCharTok{!=} \DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 5 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(x }\SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.numeric}\NormalTok{(x }\SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0 0 1 1 1 1
+\end{verbatim}
+
+Tutaj widzieliśmy, że użycie funkcji \texttt{suma()} na wektorze
+wartości logicznych \texttt{TRUE} i \texttt{FALSE}, będącym wynikiem
+\texttt{x\ \textgreater{}\ 3} daje wynik numeryczny: właśnie
+\emph{policzyłeś}, ile elementów z \texttt{x}, dla warunku
+\texttt{\textgreater{}\ 3} ma wartość \texttt{TRUE}. Podczas wywołania
+\texttt{sum()}, \texttt{R} najpierw automatycznie zamienia wartość
+logiczną na numeryczną, gdzie \texttt{TRUE} to \texttt{1}, a
+\texttt{FALSE} to \texttt{0}. To wymuszenie przejścia z logicznego na
+numeryczne ma miejsce w przypadku większości operacji matematycznych.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# which(warunek na x) zwraca true/false  }
+\CommentTok{\# każdy indeks x warunke jest spełniony}
+\FunctionTok{which}\NormalTok{(x }\SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3 4 5 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x[}\FunctionTok{which}\NormalTok{(x }\SpecialCharTok{\textgreater{}} \DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{max}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which}\NormalTok{(x }\SpecialCharTok{==} \FunctionTok{max}\NormalTok{(x))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{which.max}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+\hypertarget{task-2}{%
+\paragraph{Task 2}\label{task-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Utwórz wektor wypełniony 10 liczbami wylosowanymi z rozkładu
+  jednostajnego (podpowiedź: użyj funkcji „runif'') i zapisz je w
+  \texttt{x}.
+\item
+  Używając podzbioru logicznego jak powyżej, zbierz wszystkie elementy
+  \texttt{x}, które są większe niż 0,5 i zapisz je w \texttt{y}.
+\item
+  używając funkcji „które'', zapisz \emph{indeksy} wszystkich elementów
+  „x'', które są większe niż 0,5 w „iy''.
+\item
+  Sprawdź, czy „y'' i „x{[}iy{]}'' są identyczne.
+\end{enumerate}
+
+\hypertarget{macierze}{%
+\subsubsection{Macierze}\label{macierze}}
+
+„R'' może być również użyte do obliczeń \textbf{macierzowych}. Macierze
+mają wiersze i kolumny zawierające jeden typ danych. W macierzy ważna
+jest kolejność wierszy i kolumn. (Nie dotyczy to \emph{ramek danych}, co
+zobaczymy później.)
+
+Macierze można tworzyć za pomocą funkcji \texttt{matrix}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{9}
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5 6 7 8 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(x, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{)}
+\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+\end{verbatim}
+
+Zauważ, że w \texttt{R} rozróżniana jest wielkość liter (\texttt{x} vs
+\texttt{X}).
+
+Domyślnie funkcja \texttt{matrix} wypełnia dane w macierzy kolumna po
+kolumnie. Ale możemy też powiedzieć „R'', aby zamiast tego wypełniał
+wiersze:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Y }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(x, }\AttributeTok{nrow =} \DecValTok{3}\NormalTok{, }\AttributeTok{ncol =} \DecValTok{3}\NormalTok{, }\AttributeTok{byrow =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+\end{verbatim}
+
+Możemy również utworzyć macierz o określonym wymiarze, w której każdy
+element jest taki sam, w tym przypadku „0''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Z }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\NormalTok{Z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    0    0    0    0
+## [2,]    0    0    0    0
+\end{verbatim}
+
+Podobnie jak wektory, macierze można wywoływać za pomocą nawiasów
+kwadratowych „{[}{]}''. Ponieważ jednak macierze są dwuwymiarowe,
+podczas wywoływania musimy określić zarówno wiersz, jak i kolumnę.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+Tutaj uzyskaliśmy dostęp do elementu w pierwszym wierszu i drugiej
+kolumnie. Możemy także podzielić cały wiersz lub kolumnę.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[}\DecValTok{1}\NormalTok{, ]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 4 7
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[, }\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4 5 6
+\end{verbatim}
+
+Możemy również użyć wektorów do podzbioru więcej niż jednego wiersza lub
+kolumny na raz. Tutaj podstawiamy pierwszą i trzecią kolumnę drugiego
+wiersza:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X[}\DecValTok{2}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 8
+\end{verbatim}
+
+Macierze można również tworzyć łącząc wektory jako kolumny, używając
+polecenia „cbind'', lub łącząc wektory jako wiersze, używając polecenia
+„rbind''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{9}
+\FunctionTok{rev}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 9 8 7 6 5 4 3 2 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 1 1 1 1 1 1 1 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rbind}\NormalTok{(x, }\FunctionTok{rev}\NormalTok{(x), }\FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9]
+## x    1    2    3    4    5    6    7    8    9
+##      9    8    7    6    5    4    3    2    1
+##      1    1    1    1    1    1    1    1    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cbind}\NormalTok{(}\AttributeTok{col\_1 =}\NormalTok{ x, }\AttributeTok{col\_2 =} \FunctionTok{rev}\NormalTok{(x), }\AttributeTok{col\_3 =} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{9}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       col_1 col_2 col_3
+##  [1,]     1     9     1
+##  [2,]     2     8     1
+##  [3,]     3     7     1
+##  [4,]     4     6     1
+##  [5,]     5     5     1
+##  [6,]     6     4     1
+##  [7,]     7     3     1
+##  [8,]     8     2     1
+##  [9,]     9     1     1
+\end{verbatim}
+
+Używając \texttt{rbind} i \texttt{cbind}, możesz określić nazwy
+„argumentów'', które będą używane jako nazwy kolumn.
+
+„R'' można następnie wykorzystać do wykonania obliczeń macierzowych.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{9}
+\NormalTok{y }\OtherTok{=} \DecValTok{9}\SpecialCharTok{:}\DecValTok{1}
+\NormalTok{X }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(x, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{Y }\OtherTok{=} \FunctionTok{matrix}\NormalTok{(y, }\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{X}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    4    7
+## [2,]    2    5    8
+## [3,]    3    6    9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    9    6    3
+## [2,]    8    5    2
+## [3,]    7    4    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\SpecialCharTok{+}\NormalTok{ Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   10   10   10
+## [2,]   10   10   10
+## [3,]   10   10   10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\SpecialCharTok{{-}}\NormalTok{ Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   -8   -2    4
+## [2,]   -6    0    6
+## [3,]   -4    2    8
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\SpecialCharTok{*}\NormalTok{ Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    9   24   21
+## [2,]   16   25   16
+## [3,]   21   24    9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\SpecialCharTok{/}\NormalTok{ Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           [,1]      [,2]     [,3]
+## [1,] 0.1111111 0.6666667 2.333333
+## [2,] 0.2500000 1.0000000 4.000000
+## [3,] 0.4285714 1.5000000 9.000000
+\end{verbatim}
+
+Zauważ, że \texttt{X\ *\ Y} to \textbf{nie} mnożenie macierzy. Jest to
+mnożenie \emph{element po elemencie}. (To samo dla \texttt{X\ /\ Y}).
+Mnożenie macierzy wykorzystuje operator \texttt{\%*\%}. Inne funkcje
+macierzowe obejmują „t()'', która daje transpozycję macierzy i
+„solve()'', która zwraca odwrotność macierzy kwadratowej, jeśli jest ona
+odwracalna.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{X }\SpecialCharTok{\%*\%}\NormalTok{ Y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   90   54   18
+## [2,]  114   69   24
+## [3,]  138   84   30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t}\NormalTok{(X)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    1    2    3
+## [2,]    4    5    6
+## [3,]    7    8    9
+\end{verbatim}
+
+\hypertarget{arrays---tablice}{%
+\subsubsection{Arrays - tablice}\label{arrays---tablice}}
+
+A vector is a one-dimensional array. A matrix is a two-dimensional
+array. In \texttt{R} you can create arrays of arbitrary dimensionality
+\texttt{N}. Here is how:
+
+Wektor jest tablicą jednowymiarową. Macierz jest tablicą dwuwymiarową. W
+\texttt{R} możesz tworzyć tablice o dowolnej wymiarowości \texttt{N}.
+Oto jak:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{16}
+\NormalTok{d3 }\OtherTok{=} \FunctionTok{array}\NormalTok{(}\AttributeTok{data =}\NormalTok{ d,}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\NormalTok{d4 }\OtherTok{=} \FunctionTok{array}\NormalTok{(}\AttributeTok{data =}\NormalTok{ d,}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))  }\CommentTok{\# will recycle 1:16}
+\NormalTok{d3}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , 1
+## 
+##      [,1] [,2]
+## [1,]    1    5
+## [2,]    2    6
+## [3,]    3    7
+## [4,]    4    8
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]    9   13
+## [2,]   10   14
+## [3,]   11   15
+## [4,]   12   16
+\end{verbatim}
+
+Możesz zobaczyć, że \texttt{d3} to po prostu \emph{dwie} (4,2) macierze
+ułożone jedna na drugiej, tak jakby były \emph{dwie strony}. Podobnie
+„d4'' miałoby dwie strony i kolejne 3 rejestry w czwartym wymiarze. I
+tak dalej. Możesz podzielić tablicę na części, tak jak wektor lub
+macierz, pamiętając o indeksowaniu każdego wymiaru:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d3[ ,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{]  }\CommentTok{\# wszystkie elementy z kolumny 1, tablica 1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d3[}\DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{, , ]  }\CommentTok{\# rzędy 2:3 ze wszystkich tablic}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , 1
+## 
+##      [,1] [,2]
+## [1,]    2    6
+## [2,]    3    7
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]   10   14
+## [2,]   11   15
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{d3[}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{, ]  }\CommentTok{\# rząd 2, kolumna 2 z wszystkich tablic.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  6 14
+\end{verbatim}
+
+\hypertarget{zadanie-3}{%
+\paragraph{Zadanie 3}\label{zadanie-3}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Utwórz wektor zawierający „1,2,3,4,5'' o nazwie v.
+\item
+  Utwórz macierz (2,5) \texttt{m} zawierającą dane
+  \texttt{1,2,3,4,5,6,7,8,9,10}. Pierwszym wierszem powinno być
+  „1,2,3,4,5''.
+\item
+  Wykonaj mnożenie macierzy \texttt{m} przez \texttt{v}. Użyj polecenia
+  \texttt{\%*\%}. Jaki wymiar ma wyjście?
+\item
+  Dlaczego \texttt{v\ \%*\%\ m} nie działa?
+\end{enumerate}
+
+\hypertarget{listy}{%
+\subsubsection{Listy}\label{listy}}
+
+Lista to jednowymiarowa \emph{heterogeniczna} struktura danych. Jest
+więc indeksowany jak wektor z pojedynczą wartością całkowitą (lub z
+nazwą), ale każdy element może zawierać element dowolnego typu. Wiele
+struktur i wyników „R'' jest listami. Listy to niezwykle przydatne i
+wszechstronne obiekty, dlatego upewnij się, że rozumiesz ich
+zastosowanie:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# creation without fieldnames}
+\FunctionTok{list}\NormalTok{(}\DecValTok{42}\NormalTok{, }\StringTok{"Hello"}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] 42
+## 
+## [[2]]
+## [1] "Hello"
+## 
+## [[3]]
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# creation with fieldnames}
+\NormalTok{ex\_list }\OtherTok{=} \FunctionTok{list}\NormalTok{(}
+  \AttributeTok{a =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{),}
+  \AttributeTok{b =} \ConstantTok{TRUE}\NormalTok{,}
+  \AttributeTok{c =} \StringTok{"Hello!"}\NormalTok{,}
+  \AttributeTok{d =} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{arg =} \DecValTok{42}\NormalTok{) \{}\FunctionTok{print}\NormalTok{(}\StringTok{"Hello World!"}\NormalTok{)\},}
+  \AttributeTok{e =} \FunctionTok{diag}\NormalTok{(}\DecValTok{5}\NormalTok{)}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Listy można wywoływać przy użyciu dwóch składni: operatora \texttt{\$} i
+nawiasów kwadratowych \texttt{{[}{]}}. Operator \texttt{\$} zwraca
+nazwany \textbf{element} listy. Składnia \texttt{{[}{]}} zwraca
+\textbf{listę}, podczas gdy \texttt{{[}{[}{]}{]}} zwraca
+\textbf{element} listy.
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{ex\_list{[}1{]}} zwraca listę zawierającą pierwszy element.
+\item
+  \texttt{ex\_list{[}{[}1{]}{]}} zwraca pierwszy element listy, w tym
+  przypadku wektor.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# wywoływanie}
+\NormalTok{ex\_list}\SpecialCharTok{$}\NormalTok{e}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    0    0    0    0
+## [2,]    0    1    0    0    0
+## [3,]    0    0    1    0    0
+## [4,]    0    0    0    1    0
+## [5,]    0    0    0    0    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{2}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $a
+## [1] 1 2 3 4
+## 
+## $b
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $a
+## [1] 1 2 3 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list[[}\DecValTok{1}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list[}\FunctionTok{c}\NormalTok{(}\StringTok{"e"}\NormalTok{, }\StringTok{"a"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $e
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    0    0    0    0
+## [2,]    0    1    0    0    0
+## [3,]    0    0    1    0    0
+## [4,]    0    0    0    1    0
+## [5,]    0    0    0    0    1
+## 
+## $a
+## [1] 1 2 3 4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list[}\StringTok{"e"}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $e
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    0    0    0    0
+## [2,]    0    1    0    0    0
+## [3,]    0    0    1    0    0
+## [4,]    0    0    0    1    0
+## [5,]    0    0    0    0    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list[[}\StringTok{"e"}\NormalTok{]]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    1    0    0    0    0
+## [2,]    0    1    0    0    0
+## [3,]    0    0    1    0    0
+## [4,]    0    0    0    1    0
+## [5,]    0    0    0    0    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list}\SpecialCharTok{$}\NormalTok{d}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function(arg = 42) {print("Hello World!")}
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex\_list}\SpecialCharTok{$}\FunctionTok{d}\NormalTok{(}\AttributeTok{arg =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Hello World!"
+\end{verbatim}
+
+\hypertarget{zadanie-4}{%
+\paragraph{Zadanie 4}\label{zadanie-4}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Skopiuj i wklej powyższy kod z \texttt{ex\_list} do swojej sesji R.
+  Pamiętaj, że \texttt{lista} może zawierać dowolny obiekt \texttt{R}.
+  Jak\ldots{} kolejna lista! Utwórz więc nową listę „nowa\_lista'',
+  która ma dwa pola: pierwsze pole o nazwie „this'' z zawartością „jest
+  niesamowite'' i drugie pole o nazwie „ex\_list'', które zawiera
+  „ex\_list''.
+\item
+  Dostęp do elementów odbywa się jak na zwykłej liście, tylko z kilkoma
+  warstwami. Pobierz element \texttt{c} z \texttt{ex\_list} w
+  \texttt{nowa\_lista}!
+\item
+  Utwórz nowy wyraz z pierwszego elementu w
+  \texttt{nowa\_lista\textquotesingle{},\ elementu\ pod\ etykietą}this`.
+  Użyj funkcji „paste'', aby wydrukować na ekranie „R jest
+  niesamowity''.
+\end{enumerate}
+
+\hypertarget{dataframes}{%
+\subsection{Ramki Danych - Data Frames}\label{dataframes}}
+
+Kiedy wprowadziliśmy „R'', widzieliśmy już wektory i macierze do
+przechowywania danych. W tym kursie przedstawimy teraz \textbf{ramkę
+danych}, która będzie najpopularniejszym sposobem przechowywania danych
+i interakcji z nimi. „Data.frame'' jest podobna do „pandas.dataframe'' w
+Pythonie lub Julii „DataFrame''. (Ale wersja \texttt{R} była pierwsza! )
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_data }\OtherTok{=} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{x =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{5}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{),}
+                          \AttributeTok{y =} \FunctionTok{c}\NormalTok{(}\FunctionTok{rep}\NormalTok{(}\StringTok{"Hello"}\NormalTok{, }\DecValTok{9}\NormalTok{), }\StringTok{"Goodbye"}\NormalTok{),}
+                          \AttributeTok{z =} \FunctionTok{rep}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{), }\DecValTok{5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+W przeciwieństwie do macierzy, którą można traktować jako wektor
+podzielony na wiersze i kolumny, ramka danych nie musi mieć tego samego
+typu danych dla każdego elementu. Ramka danych to \textbf{lista}
+wektorów, a każdy wektor ma \emph{nazwę}. Zatem każdy wektor musi
+zawierać ten sam typ danych, ale różne wektory mogą przechowywać różne
+typy danych. Należy jednak pamiętać, że wszystkie wektory muszą mieć
+\textbf{tę samą długość} (w odróżnieniu od \texttt{listy})!
+
+\begin{tip}
+\textbf{data.frame} jest podobna do typowego arkusza kalkulacyjnego. Są
+\emph{wiersze} i \emph{kolumny}. Wiersz jest zwykle uważany za
+\emph{obserwację}, a każda kolumna jest określoną \emph{zmienną},
+\emph{cechą} lub \emph{cechą} tej obserwacji.
+\end{tip}
+
+Spójrzmy na ramkę danych, którą właśnie utworzyliśmy powyżej:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_data}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    x       y     z
+## 1  1   Hello  TRUE
+## 2  3   Hello FALSE
+## 3  5   Hello  TRUE
+## 4  7   Hello FALSE
+## 5  9   Hello  TRUE
+## 6  1   Hello FALSE
+## 7  3   Hello  TRUE
+## 8  5   Hello FALSE
+## 9  7   Hello  TRUE
+## 10 9 Goodbye FALSE
+\end{verbatim}
+
+W przeciwieństwie do listy, która ma większą elastyczność, wszystkie
+elementy ramki danych muszą być wektorami. Ponownie uzyskujemy dostęp do
+dowolnej kolumny za pomocą operatora \texttt{\$}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_data}\SpecialCharTok{$}\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1 3 5 7 9 1 3 5 7 9
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{all.equal}\NormalTok{(}\FunctionTok{length}\NormalTok{(example\_data}\SpecialCharTok{$}\NormalTok{x),}
+          \FunctionTok{length}\NormalTok{(example\_data}\SpecialCharTok{$}\NormalTok{y),}
+          \FunctionTok{length}\NormalTok{(example\_data}\SpecialCharTok{$}\NormalTok{z))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(example\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    10 obs. of  3 variables:
+##  $ x: num  1 3 5 7 9 1 3 5 7 9
+##  $ y: chr  "Hello" "Hello" "Hello" "Hello" ...
+##  $ z: logi  TRUE FALSE TRUE FALSE TRUE FALSE ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(example\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ncol}\NormalTok{(example\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(example\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10  3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(example\_data)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "x" "y" "z"
+\end{verbatim}
+
+\hypertarget{praca-z-data.frames}{%
+\subsubsection{\texorpdfstring{Praca z
+\texttt{data.frames}}{Praca z data.frames}}\label{praca-z-data.frames}}
+
+Powyższa funkcja \texttt{data.frame()} to jeden ze sposobów tworzenia
+ramki danych. Możemy także importować dane z różnych typów plików do
+\texttt{R}, a także korzystać z danych przechowywanych w pakietach.
+
+Aby wczytać te dane z powrotem do \texttt{R}, użyjemy wbudowanej funkcji
+\texttt{read.csv}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{example\_data\_from\_disk }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"example{-}data.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Ta konkretna linia kodu zakłada, że zainstalowałeś powiązany pakiet R z
+tą książką, dlatego masz ten zestaw danych przechowywany na swoim
+komputerze w
+\texttt{system.file(package\ =\ "ScPoEconometrics","datasets","example-data.csv")}.
+
+\#\texttt{\{r\}\ \#example\_data\_from\_disk\ \#}
+
+Korzystając z danych, zazwyczaj chcielibyśmy zrobić trzy rzeczy:
+
+\begin{itemize}
+\tightlist
+\item
+  Spójrzeć na surowe dane.
+\item
+  Zrozumieć dane. (Skąd to się wzięło? Jakie są zmienne? Itp.)
+\item
+  Zwizualiować dane.
+\end{itemize}
+
+Aby przeglądać dane w \texttt{data.frame}, mamy dwa przydatne polecenia:
+\texttt{head()} i \texttt{str()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# pracujemy z wbudowanym zbiorem danych mtcars:}
+\NormalTok{mtcars}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                      mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4           21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag       21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710          22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive      21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout   18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+## Valiant             18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+## Duster 360          14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+## Merc 240D           24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+## Merc 230            22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+## Merc 280            19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+## Merc 280C           17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+## Merc 450SE          16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+## Merc 450SL          17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+## Merc 450SLC         15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+## Cadillac Fleetwood  10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+## Lincoln Continental 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+## Chrysler Imperial   14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+## Fiat 128            32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+## Honda Civic         30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+## Toyota Corolla      33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+## Toyota Corona       21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+## Dodge Challenger    15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+## AMC Javelin         15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+## Camaro Z28          13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+## Pontiac Firebird    19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+## Fiat X1-9           27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+## Porsche 914-2       26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+## Lotus Europa        30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+## Ford Pantera L      15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+## Ferrari Dino        19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+## Maserati Bora       15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+## Volvo 142E          21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+\end{verbatim}
+
+Możesz zobaczyć, że to drukuje całą ramkę danych na ekranie. Funkcja
+\texttt{head()} wyświetli pierwsze \texttt{n} obserwacji ramki danych.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(mtcars,}\AttributeTok{n=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##               mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4      21   6  160 110  3.9 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag  21   6  160 110  3.9 2.875 17.02  0  1    4    4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{head}\NormalTok{(mtcars) }\CommentTok{\# default}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                    mpg cyl disp  hp drat    wt  qsec vs am gear carb
+## Mazda RX4         21.0   6  160 110 3.90 2.620 16.46  0  1    4    4
+## Mazda RX4 Wag     21.0   6  160 110 3.90 2.875 17.02  0  1    4    4
+## Datsun 710        22.8   4  108  93 3.85 2.320 18.61  1  1    4    1
+## Hornet 4 Drive    21.4   6  258 110 3.08 3.215 19.44  1  0    3    1
+## Hornet Sportabout 18.7   8  360 175 3.15 3.440 17.02  0  0    3    2
+## Valiant           18.1   6  225 105 2.76 3.460 20.22  1  0    3    1
+\end{verbatim}
+
+Funkcja \texttt{str()} wyświetli „strukturę'' ramki danych. Wyświetli
+liczbę \textbf{obserwacji} i \textbf{zmiennych}, wylistuje zmienne, poda
+typ każdej zmiennej i pokaże niektóre elementy każdej zmiennej.
+Informacje te można znaleźć także w oknie „Środowisko'' w RStudio.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    32 obs. of  11 variables:
+##  $ mpg : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl : num  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp: num  160 160 108 258 360 ...
+##  $ hp  : num  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat: num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt  : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec: num  16.5 17 18.6 19.4 17 ...
+##  $ vs  : num  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am  : num  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear: num  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb: num  4 4 1 1 2 1 4 2 2 4 ...
+\end{verbatim}
+
+W tym zbiorze danych obserwacja dotyczy konkretnego modelu samochodu, a
+zmienne opisują cechy samochodu, na przykład jego zużycie paliwa lub
+masę.
+
+Aby lepiej zrozumieć zbiór danych, używamy operatora „?'', aby
+wyświetlić dokumentację danych.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?mtcars}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{R} posiada szereg funkcji umożliwiających szybką pracę i
+wydobywanie podstawowych informacji z ramek danych. Aby szybko uzyskać
+wektor nazw zmiennych, używamy funkcji \texttt{names()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "mpg"  "cyl"  "disp" "hp"   "drat" "wt"   "qsec" "vs"   "am"   "gear"
+## [11] "carb"
+\end{verbatim}
+
+Aby uzyskać dostęp do jednej ze zmiennych \textbf{jako wektora}, używamy
+operatora \texttt{\$}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}\SpecialCharTok{$}\NormalTok{mpg}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 21.0 21.0 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 17.8 16.4 17.3 15.2 10.4
+## [16] 10.4 14.7 32.4 30.4 33.9 21.5 15.5 15.2 13.3 19.2 27.3 26.0 30.4 15.8 19.7
+## [31] 15.0 21.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mtcars}\SpecialCharTok{$}\NormalTok{wt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 2.620 2.875 2.320 3.215 3.440 3.460 3.570 3.190 3.150 3.440 3.440 4.070
+## [13] 3.730 3.780 5.250 5.424 5.345 2.200 1.615 1.835 2.465 3.520 3.435 3.840
+## [25] 3.845 1.935 2.140 1.513 3.170 2.770 3.570 2.780
+\end{verbatim}
+
+Do uzyskania informacji o wymiarach ramki danych możemy użyć funkcji
+\texttt{dim()}, \texttt{nrow()} i \texttt{ncol()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dim}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 32 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{nrow}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 32
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ncol}\NormalTok{(mtcars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 11
+\end{verbatim}
+
+Tutaj „nrow()'' to także liczba obserwacji, która w większości
+przypadków jest \emph{wielkością próby}.
+
+Wywoływanie ramek danych może działać podobnie jak wywoływanie macierzy
+za pomocą nawiasów kwadratowych, \texttt{{[}\ ,\ {]}}. Tutaj znajdujemy
+pojazdy o mpg powyżej 25 mil na galon i wyświetlamy tylko kolumny
+„cyl'', „disp'' i „wt''.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# mpg[rząd warunek, kolumna warunek]}
+\NormalTok{mtcars[mtcars}\SpecialCharTok{$}\NormalTok{mpg }\SpecialCharTok{\textgreater{}} \DecValTok{20}\NormalTok{, }\FunctionTok{c}\NormalTok{(}\StringTok{"cyl"}\NormalTok{, }\StringTok{"disp"}\NormalTok{, }\StringTok{"wt"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                cyl  disp    wt
+## Mazda RX4        6 160.0 2.620
+## Mazda RX4 Wag    6 160.0 2.875
+## Datsun 710       4 108.0 2.320
+## Hornet 4 Drive   6 258.0 3.215
+## Merc 240D        4 146.7 3.190
+## Merc 230         4 140.8 3.150
+## Fiat 128         4  78.7 2.200
+## Honda Civic      4  75.7 1.615
+## Toyota Corolla   4  71.1 1.835
+## Toyota Corona    4 120.1 2.465
+## Fiat X1-9        4  79.0 1.935
+## Porsche 914-2    4 120.3 2.140
+## Lotus Europa     4  95.1 1.513
+## Volvo 142E       4 121.0 2.780
+\end{verbatim}
+
+Tutaj „nrow()'' to także liczba obserwacji, która w większości
+przypadków jest \emph{wielkością próby}.
+
+Alternatywą byłoby użycie funkcji „subset()'', która ma znacznie
+bardziej czytelną składnię.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{subset}\NormalTok{(mtcars, }\AttributeTok{subset =}\NormalTok{ mpg }\SpecialCharTok{\textgreater{}} \DecValTok{25}\NormalTok{, }\AttributeTok{select =} \FunctionTok{c}\NormalTok{(}\StringTok{"cyl"}\NormalTok{, }\StringTok{"disp"}\NormalTok{, }\StringTok{"wt"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{zadanie-5}{%
+\paragraph{Zadanie 5}\label{zadanie-5}}
+
+1.Ile obserwacji jest w \texttt{mtcars}? 1. Ile zmiennych? 1. Jaka jest
+średnia wartość \texttt{mpg}? 1. Jaka jest średnia wartość \texttt{mpg}
+dla samochodów mających więcej niż 4 cylindry, czyli z
+\texttt{cyl\textgreater{}4}?
+
+\hypertarget{podstawy-programowania}{%
+\subsection{Podstawy Programowania}\label{podstawy-programowania}}
+
+W tej sekcji zilustrujemy kilka ogólnych pojęć związanych z
+programowaniem.
+
+\hypertarget{zmienne}{%
+\subsubsection{Zmienne}\label{zmienne}}
+
+Z terminem \emph{zmienna} spotkaliśmy się już kilkukrotnie, ale głównie
+w kontekście kolumny ramki danych. W programowaniu zmienna oznacza
+\emph{obiekt}. Można to powiedzieć inaczej, mówiąc, że zmienna jest
+nazwą lub \emph{etykietą} czegoś:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1}
+\NormalTok{y }\OtherTok{=} \StringTok{"roses"}
+\NormalTok{z }\OtherTok{=} \ControlFlowTok{function}\NormalTok{(x)\{}\FunctionTok{sqrt}\NormalTok{(x)\}}
+\end{Highlighting}
+\end{Shaded}
+
+Tutaj \texttt{x} odnosi się do wartości \texttt{1}, \texttt{y} zawiera
+ciąg „róże'', a \texttt{z} to nazwa funkcji, która oblicza \(\sqrt{x}\).
+Zauważ, że argument „x'' funkcji różni się od argumentu „x'', który
+właśnie zdefiniowaliśmy. Jest \textbf{lokalny} dla funkcji:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{z}\NormalTok{(}\DecValTok{9}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3
+\end{verbatim}
+
+\hypertarget{control-flow}{%
+\subsubsection{Control Flow}\label{control-flow}}
+
+Przepływ kontroli odnosi się do sposobów dostosowywania kodu do różnych
+okoliczności. Opierając się na tym, że „warunek'' ma wartość „PRAWDA'',
+Twój program wykona jedną rzecz, a nie inną. Jest to najbardziej znane
+jako instrukcja „if/else''. W \texttt{R} składnia if/else wygląda
+następująco:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{ (}\AttributeTok{condition =} \ConstantTok{TRUE}\NormalTok{) \{}
+\NormalTok{  some R code}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+\NormalTok{  some other R code}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Na przykład,
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x }\OtherTok{=} \DecValTok{1}
+\NormalTok{y }\OtherTok{=} \DecValTok{3}
+\ControlFlowTok{if}\NormalTok{ (x }\SpecialCharTok{\textgreater{}}\NormalTok{ y) \{  }\CommentTok{\# test if x \textgreater{} y}
+  \CommentTok{\# if TRUE}
+\NormalTok{  z }\OtherTok{=}\NormalTok{ x }\SpecialCharTok{*}\NormalTok{ y}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"x większe y"}\NormalTok{)}
+\NormalTok{\} }\ControlFlowTok{else}\NormalTok{ \{}
+  \CommentTok{\# if FALSE}
+\NormalTok{  z }\OtherTok{=}\NormalTok{ x }\SpecialCharTok{+} \DecValTok{5} \SpecialCharTok{*}\NormalTok{ y}
+  \FunctionTok{print}\NormalTok{(}\StringTok{"x mniejsze równe y"}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "x mniejsze równe y"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 16
+\end{verbatim}
+
+\hypertarget{pux119tle}{%
+\subsubsection{Pętle}\label{pux119tle}}
+
+Pętle są bardzo ważnym narzedziem programistycznym. Jak sama nazwa
+wskazuje, w \emph{pętli}, program \emph{wielokrotnie} wykonuje pętlę po
+zestawie instrukcji, dopóki jakiś warunek nie każe mu się zatrzymać.
+Bardzo potężna, a jednocześnie prosta konstrukcja polega na tym, że
+program może \emph{policzyć, ile kroków} już wykonał - co może być ważne
+w przypadku wielu algorytmów. Składnia pętli „for'' (są inne) jest
+następująca
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (ix }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{10}\NormalTok{)\{   }\CommentTok{\# does not have to be 1:10!}
+  \CommentTok{\# loop body: gets executed each time}
+  \CommentTok{\# the value of ix changes with each iteration}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+Rozważmy na przykład prostą pętlę „for'', która po prostu wypisze na
+ekranie wartość \emph{iteratora} (w tym przypadku zwanego „i''):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\DecValTok{5}\NormalTok{)\{}
+  \FunctionTok{print}\NormalTok{(i)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1
+## [1] 2
+## [1] 3
+## [1] 4
+## [1] 5
+\end{verbatim}
+
+Zauważ, że zamiast \texttt{1:5} moglibyśmy mieć \emph{dowolny} rodzaj
+iterowalnej kolekcji:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"mango"}\NormalTok{,}\StringTok{"banany"}\NormalTok{,}\StringTok{"jabłka"}\NormalTok{))\{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Uwielbiam "}\NormalTok{,i))  }\CommentTok{\# the paste function pastes together strings}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Uwielbiam  mango"
+## [1] "Uwielbiam  banany"
+## [1] "Uwielbiam  jabłka"
+\end{verbatim}
+
+Często widzimy także \emph{zagnieżdżone} pętle, co sugeruje ich nazwa:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{2}\SpecialCharTok{:}\DecValTok{3}\NormalTok{)\{}
+  \CommentTok{\# pierwsze zagnieżdżenie: dla każdego i}
+  \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \FunctionTok{c}\NormalTok{(}\StringTok{"mango"}\NormalTok{,}\StringTok{"banany"}\NormalTok{,}\StringTok{"jabłka"}\NormalTok{))\{}
+    \CommentTok{\# drugir zagnieżdżenie: dla każdego j}
+    \FunctionTok{print}\NormalTok{(}\FunctionTok{paste}\NormalTok{(}\StringTok{"Poproszę"}\NormalTok{,i,j,}\StringTok{"?"}\NormalTok{))}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Poproszę 2 mango ?"
+## [1] "Poproszę 2 banany ?"
+## [1] "Poproszę 2 jabłka ?"
+## [1] "Poproszę 3 mango ?"
+## [1] "Poproszę 3 banany ?"
+## [1] "Poproszę 3 jabłka ?"
+\end{verbatim}
+
+Należy tu zauważyć, że obliczenia można wykonywać za pomocą iteratorów
+\emph{będąc wewnątrz pętli}.
+
+\hypertarget{funkcje}{%
+\subsubsection{Funkcje}\label{funkcje}}
+
+Do tej pory korzystaliśmy z funkcji, ale tak naprawdę nie omawialiśmy
+niektórych ich szczegółów. Funkcja to zestaw instrukcji, które wykonuje
+dla nas „R'', podobnie jak te zebrane w pliku skryptu. Dobrą rzeczą jest
+to, że funkcje są znacznie bardziej elastyczne niż skrypty, ponieważ
+mogą zależeć od \emph{argumentów wejściowych}, które zmieniają sposób
+zachowania funkcji. Oto jak zdefiniować funkcję:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{function\_name }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(arg1,}\AttributeTok{arg2=}\NormalTok{wartosc\_domyslna)\{}
+  \CommentTok{\# function body}
+  \CommentTok{\# you do stuff with arg1 and arg2}
+  \CommentTok{\# you can have any number of arguments, with or without defaults}
+  \CommentTok{\# any valid \textasciigrave{}R\textasciigrave{} commands can be included here}
+  \CommentTok{\# the last line is returned}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+A oto trywialny przykład definicji funkcji:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{witaj }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{imie =} \StringTok{"Lord Vader"}\NormalTok{)\{}
+  \FunctionTok{paste}\NormalTok{(}\StringTok{"Witaj,"}\NormalTok{,imie)}
+  \CommentTok{\# we could also write:}
+  \CommentTok{\# return(paste("Wiatj",imie))}
+\NormalTok{\}}
+
+\CommentTok{\# we call the function by typing it\textquotesingle{}s name with round brackets}
+\FunctionTok{witaj}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Witaj, Lord Vader"
+\end{verbatim}
+
+Widzisz, że jeśli nie określisz argumentu „twoje\_imię'', „R'' powraca
+do podanej wartości domyślnej. Wypróbuj teraz pod własnym imieniem!
+
+Samo wpisanie nazwy funkcji zwraca nam rzeczywistą definicję, co czasami
+jest przydatne:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{witaj}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## function(imie = "Lord Vader"){
+##   paste("Witaj,",imie)
+##   # we could also write:
+##   # return(paste("Wiatj",imie))
+## }
+\end{verbatim}
+
+Warto wziąć pod uwagę, że zanim zdefiniowaliśmy powyżej funkcję
+„witaj'', „R'' nie wiedział, co zrobić, jeśli wywołałeś funkcję
+„hello()''. Funkcja nie istniała! W tym sensie \emph{nauczyliśmy „R''
+nowej sztuczki}. Ta funkcja tworzenia nowych możliwości poza językiem
+podstawowym jest jedną z najpotężniejszych cech języków programowania.
+Ogólnie rzecz biorąc, dobrą praktyką jest dzielenie kodu na kilka
+mniejszych funkcji zamiast jednego długiego pliku skryptu. Dzięki temu
+Twój kod będzie bardziej czytelny i łatwiej będzie wyśledzić błędy.
+
+\hypertarget{task-6}{%
+\paragraph{Task 6}\label{task-6}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Napisz pętlę for, która odlicza od 10 do 1 i wypisuje na ekranie
+  wartość iteratora.
+\item
+  Zmodyfikuj tę pętlę, aby zapisać „i iteracje do wykonania'', gdzie
+  „i'' jest iteratorem
+\item
+  Zmodyfikuj tę pętlę tak, aby każda iteracja trwała około jednej
+  sekundy. Można to osiągnąć dodając polecenie \texttt{Sys.sleep(1)} pod
+  linią wyświetlającą ``i iteracji do wykonania''.
+\end{enumerate}
+
+warnings()
+
+\end{document}
