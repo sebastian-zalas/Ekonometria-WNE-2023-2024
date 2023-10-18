@@ -1961,7 +1961,7 @@ rozróżnienie. Typowy fragment kodu z danymi wyjściowymi będzie zatem
 wyglądać następująco:</p>
 <pre class="r"><code>1 + 3</code></pre>
 <pre><code>## [1] 4</code></pre>
-<pre class="r"><code># everything after a # is a comment, i.e. R disregards it.</code></pre>
+<pre class="r"><code># wszystko po # jest komentarzem i R ignoruje to.</code></pre>
 <p>gdzie w pierwszej linii widzisz kod <code>R</code>, a w drugiej linii
 wynik. Jak wspomniano, linia ta zaczyna się od <code>##</code>
 oznaczającego <em>to jest wyjście</em>, po którym następuje
@@ -2064,10 +2064,9 @@ jest pierwszym elementem wektora. Większe wektory będą rozpoczynać
 dodatkowe wiersze od czegoś w rodzaju „[7]”, gdzie „7” jest indeksem
 pierwszego elementu tego wiersza.</p>
 <p>Prawdopodobnie najczęstszym sposobem tworzenia wektora w „R” jest
-użycie funkcji „c()”, która jest skrótem od „połącz”. Jak sama nazwa
-wskazuje, łączy w sobie listę elementów oddzielonych przecinkami. (Czy
-jesteś zajęty wpisywaniem wszystkich tych przykładów w konsoli „R”? :-)
-)</p>
+użycie funkcji „c()”, która jest skrótem od „połącz” (coerce). Jak sama
+nazwa wskazuje, łączy w sobie listę elementów oddzielonych
+przecinkami.</p>
 <pre class="r"><code>c(1, 3, 5, 7, 8, 9)</code></pre>
 <pre><code>## [1] 1 3 5 7 8 9</code></pre>
 <pre class="r"><code>c(5,5,5)</code></pre>
@@ -2166,10 +2165,9 @@ wektor wyglądający tak:
 </div>
 <div id="wywoływanie-subsetting" class="section level4">
 <h4>Wywoływanie (Subsetting)</h4>
-<p>Aby podzielić wektor na podzbiór, czyli wybrać tylko niektóre jego
-elementy, używamy nawiasów kwadratowych „[]”. Widzimy tutaj, że
-<code>x[1]</code> zwraca pierwszy element, a <code>x[3]</code> zwraca
-trzeci element:</p>
+<p>Aby wywołać z wektora tylko niektóre jego elementy, używamy nawiasów
+kwadratowych „[]”. Widzimy tutaj, że <code>x[1]</code> zwraca pierwszy
+element, a <code>x[3]</code> zwraca trzeci element:</p>
 <pre class="r"><code>x</code></pre>
 <pre><code>## [1] 1 3 5 7 8 9</code></pre>
 <pre class="r"><code>x[1]</code></pre>
@@ -2335,8 +2333,8 @@ which(x &gt; 3)</code></pre>
 <pre><code>## [1] 6</code></pre>
 <pre class="r"><code>which.max(x)</code></pre>
 <pre><code>## [1] 6</code></pre>
-<div id="task-2" class="section level4">
-<h4>Task 2</h4>
+<div id="zadanie-2" class="section level4">
+<h4>Zadanie 2</h4>
 <ol style="list-style-type: decimal">
 <li>Utwórz wektor wypełniony 10 liczbami wylosowanymi z rozkładu
 jednostajnego (podpowiedź: użyj funkcji „runif”) i zapisz je w
@@ -2486,15 +2484,12 @@ kwadratowej, jeśli jest ona odwracalna.</p>
 </div>
 <div id="arrays---tablice" class="section level3">
 <h3>Arrays - tablice</h3>
-<p>A vector is a one-dimensional array. A matrix is a two-dimensional
-array. In <code>R</code> you can create arrays of arbitrary
-dimensionality <code>N</code>. Here is how:</p>
 <p>Wektor jest tablicą jednowymiarową. Macierz jest tablicą
 dwuwymiarową. W <code>R</code> możesz tworzyć tablice o dowolnej
 wymiarowości <code>N</code>. Oto jak:</p>
 <pre class="r"><code>d = 1:16
 d3 = array(data = d,dim = c(4,2,2))
-d4 = array(data = d,dim = c(4,2,2,3))  # will recycle 1:16
+d4 = array(data = d,dim = c(4,2,2,3)) 
 d3</code></pre>
 <pre><code>## , , 1
 ## 
@@ -2715,12 +2710,13 @@ plików do <code>R</code>, a także korzystać z danych przechowywanych w
 pakietach.</p>
 <p>Aby wczytać te dane z powrotem do <code>R</code>, użyjemy wbudowanej
 funkcji <code>read.csv</code>:</p>
-<pre class="r"><code>example_data_from_disk = read.csv(&quot;example-data.csv&quot;)</code></pre>
-<p>Ta konkretna linia kodu zakłada, że zainstalowałeś powiązany pakiet R
-z tą książką, dlatego masz ten zestaw danych przechowywany na swoim
-komputerze w
-<code>system.file(package = &quot;ScPoEconometrics&quot;,&quot;datasets&quot;,&quot;example-data.csv&quot;)</code>.</p>
-<p>#<code>{r} #example_data_from_disk #</code></p>
+<pre class="r"><code>example_data_from_disk = read.csv(&quot;example-data.csv&quot;)
+example_data_from_disk</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["x"],"name":[1],"type":["int"],"align":["right"]},{"label":["y"],"name":[2],"type":["chr"],"align":["left"]},{"label":["z"],"name":[3],"type":["lgl"],"align":["right"]}],"data":[{"1":"1","2":"Hello","3":"TRUE"},{"1":"3","2":"Hello","3":"FALSE"},{"1":"5","2":"Hello","3":"TRUE"},{"1":"7","2":"Hello","3":"FALSE"},{"1":"9","2":"Hello","3":"TRUE"},{"1":"1","2":"Hello","3":"FALSE"},{"1":"3","2":"Hello","3":"TRUE"},{"1":"5","2":"Hello","3":"FALSE"},{"1":"7","2":"Hello","3":"TRUE"},{"1":"9","2":"Goodbye","3":"FALSE"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <p>Korzystając z danych, zazwyczaj chcielibyśmy zrobić trzy rzeczy:</p>
 <ul>
 <li>Spójrzeć na surowe dane.</li>
@@ -2849,13 +2845,13 @@ zdefiniowaliśmy. Jest <strong>lokalny</strong> dla funkcji:</p>
 <pre class="r"><code>z(9)</code></pre>
 <pre><code>## [1] 3</code></pre>
 </div>
-<div id="control-flow" class="section level3">
-<h3>Control Flow</h3>
-<p>Przepływ kontroli odnosi się do sposobów dostosowywania kodu do
-różnych okoliczności. Opierając się na tym, że „warunek” ma wartość
-„PRAWDA”, Twój program wykona jedną rzecz, a nie inną. Jest to
-najbardziej znane jako instrukcja „if/else”. W <code>R</code> składnia
-if/else wygląda następująco:</p>
+<div id="warunki" class="section level3">
+<h3>Warunki</h3>
+<p>Warunkowanie pomaga dostosowywć kod do różnych okoliczności.
+Opierając się na tym, że „warunek” ma wartość „PRAWDA”, Twój program
+wykona jedną rzecz, a nie inną. Jest to najbardziej znane jako
+instrukcja „if/else”. W <code>R</code> składnia if/else wygląda
+następująco:</p>
 <pre class="r"><code>if (condition = TRUE) {
   some R code
 } else {
@@ -2935,20 +2931,20 @@ to, że funkcje są znacznie bardziej elastyczne niż skrypty, ponieważ
 mogą zależeć od <em>argumentów wejściowych</em>, które zmieniają sposób
 zachowania funkcji. Oto jak zdefiniować funkcję:</p>
 <pre class="r"><code>function_name &lt;- function(arg1,arg2=wartosc_domyslna){
-  # function body
-  # you do stuff with arg1 and arg2
-  # you can have any number of arguments, with or without defaults
-  # any valid `R` commands can be included here
-  # the last line is returned
+  # caiło funkcji - function body
+  # zrób rzeczy z arg1 i arg2
+  # możesz mieć dowolną liczbę argumentów
+  # lista poleceń do `R` może być wprowadzona tutaj
+  # ostatnia linia jest zwrócona
 }</code></pre>
 <p>A oto trywialny przykład definicji funkcji:</p>
 <pre class="r"><code>witaj &lt;- function(imie = &quot;Lord Vader&quot;){
   paste(&quot;Witaj,&quot;,imie)
-  # we could also write:
+  # mozemy również napisać:
   # return(paste(&quot;Wiatj&quot;,imie))
 }
 
-# we call the function by typing it&#39;s name with round brackets
+# wywołujemy funkcję, pisząc jej nazwę z okrągłymi nawiasami.
 witaj()</code></pre>
 <pre><code>## [1] &quot;Witaj, Lord Vader&quot;</code></pre>
 <p>Widzisz, że jeśli nie określisz argumentu „twoje_imię”, „R” powraca
@@ -2958,7 +2954,7 @@ czasami jest przydatne:</p>
 <pre class="r"><code>witaj</code></pre>
 <pre><code>## function(imie = &quot;Lord Vader&quot;){
 ##   paste(&quot;Witaj,&quot;,imie)
-##   # we could also write:
+##   # mozemy również napisać:
 ##   # return(paste(&quot;Wiatj&quot;,imie))
 ## }</code></pre>
 <p>Warto wziąć pod uwagę, że zanim zdefiniowaliśmy powyżej funkcję
@@ -2969,8 +2965,8 @@ podstawowym jest jedną z najpotężniejszych cech języków programowania.
 Ogólnie rzecz biorąc, dobrą praktyką jest dzielenie kodu na kilka
 mniejszych funkcji zamiast jednego długiego pliku skryptu. Dzięki temu
 Twój kod będzie bardziej czytelny i łatwiej będzie wyśledzić błędy.</p>
-<div id="task-6" class="section level4">
-<h4>Task 6</h4>
+<div id="zadanie-6" class="section level4">
+<h4>Zadanie 6</h4>
 <ol style="list-style-type: decimal">
 <li>Napisz pętlę for, która odlicza od 10 do 1 i wypisuje na ekranie
 wartość iteratora.</li>

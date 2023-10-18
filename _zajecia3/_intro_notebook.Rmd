@@ -144,7 +144,7 @@ Wszystkie linie wyjściowe są poprzedzone znakiem „##”, aby umożliwić roz
 ```{r}
 
 1 + 3
-# everything after a # is a comment, i.e. R disregards it.
+# wszystko po # jest komentarzem i R ignoruje to.
 
 ```
 
@@ -195,7 +195,7 @@ Na koniec należy pamiętać, że ten sposób wyświetlania wyników jest w peł
 
 Wiele operacji w `R` w dużym stopniu wykorzystuje **wektory**. Wektor jest *pojemnikiem* na obiekty identycznego typu (patrz \@ref(data-types) powyżej). Wektory w `R` są indeksowane począwszy od `1`. To właśnie wskazuje „[1]” na wyjściu, że pierwszy element wyświetlanego wiersza jest pierwszym elementem wektora. Większe wektory będą rozpoczynać dodatkowe wiersze od czegoś w rodzaju „[7]”, gdzie „7” jest indeksem pierwszego elementu tego wiersza.
 
-Prawdopodobnie najczęstszym sposobem tworzenia wektora w „R” jest użycie funkcji „c()”, która jest skrótem od „połącz”. Jak sama nazwa wskazuje, łączy w sobie listę elementów oddzielonych przecinkami. (Czy jesteś zajęty wpisywaniem wszystkich tych przykładów w konsoli „R”? :-) )
+Prawdopodobnie najczęstszym sposobem tworzenia wektora w „R” jest użycie funkcji „c()”, która jest skrótem od „połącz" (coerce). Jak sama nazwa wskazuje, łączy w sobie listę elementów oddzielonych przecinkami.
 
 ```{r}
 c(1, 3, 5, 7, 8, 9)
@@ -282,7 +282,7 @@ Wypróbujmy to! **Twoja kolej**:
 
 #### Wywoływanie (Subsetting)
 
-Aby podzielić wektor na podzbiór, czyli wybrać tylko niektóre jego elementy, używamy nawiasów kwadratowych „[]”. Widzimy tutaj, że `x[1]` zwraca pierwszy element, a `x[3]` zwraca trzeci element:
+Aby wywołać z wektora tylko niektóre jego elementy, używamy nawiasów kwadratowych „[]”. Widzimy tutaj, że `x[1]` zwraca pierwszy element, a `x[3]` zwraca trzeci element:
 
 ```{r}
 x
@@ -385,7 +385,7 @@ which(x == max(x))
 which.max(x)
 ```
 
-#### Task 2
+#### Zadanie 2
 
 1. Utwórz wektor wypełniony 10 liczbami wylosowanymi z rozkładu jednostajnego (podpowiedź: użyj funkcji „runif”) i zapisz je w `x`.
 1. Używając podzbioru logicznego jak powyżej, zbierz wszystkie elementy `x`, które są większe niż 0,5 i zapisz je w `y`. 
@@ -487,14 +487,12 @@ t(X)
 
 ### Arrays - tablice
 
-A vector is a one-dimensional array. A matrix is a two-dimensional array. In `R` you can create arrays of arbitrary dimensionality `N`. Here is how:
-
 Wektor jest tablicą jednowymiarową. Macierz jest tablicą dwuwymiarową. W `R` możesz tworzyć tablice o dowolnej wymiarowości `N`. Oto jak:
 
 ```{r}
 d = 1:16
 d3 = array(data = d,dim = c(4,2,2))
-d4 = array(data = d,dim = c(4,2,2,3))  # will recycle 1:16
+d4 = array(data = d,dim = c(4,2,2,3)) 
 d3
 ```
 
@@ -616,13 +614,8 @@ Aby wczytać te dane z powrotem do `R`, użyjemy wbudowanej funkcji `read.csv`:
 
 ```{r, message = FALSE, warning = FALSE}
 example_data_from_disk = read.csv("example-data.csv")
+example_data_from_disk
 ```
-
-Ta konkretna linia kodu zakłada, że zainstalowałeś powiązany pakiet R z tą książką, dlatego masz ten zestaw danych przechowywany na swoim komputerze w `system.file(package = "ScPoEconometrics","datasets","example-data.csv") `.
-
-#```{r}
-#example_data_from_disk
-#```
 
 Korzystając z danych, zazwyczaj chcielibyśmy zrobić trzy rzeczy:
   
@@ -724,9 +717,9 @@ x
 z(9)
 ```
 
-### Control Flow
+### Warunki
 
-Przepływ kontroli odnosi się do sposobów dostosowywania kodu do różnych okoliczności. Opierając się na tym, że „warunek” ma wartość „PRAWDA”, Twój program wykona jedną rzecz, a nie inną. Jest to najbardziej znane jako instrukcja „if/else”. W `R` składnia if/else wygląda następująco:
+Warunkowanie pomaga dostosowywć kod do różnych okoliczności. Opierając się na tym, że „warunek” ma wartość „PRAWDA”, Twój program wykona jedną rzecz, a nie inną. Jest to najbardziej znane jako instrukcja „if/else”. W `R` składnia if/else wygląda następująco:
   
 ```{r, eval = FALSE}
 if (condition = TRUE) {
@@ -802,11 +795,11 @@ Do tej pory korzystaliśmy z funkcji, ale tak naprawdę nie omawialiśmy niektó
 
 ```{r eval=FALSE}
 function_name <- function(arg1,arg2=wartosc_domyslna){
-  # function body
-  # you do stuff with arg1 and arg2
-  # you can have any number of arguments, with or without defaults
-  # any valid `R` commands can be included here
-  # the last line is returned
+  # caiło funkcji - function body
+  # zrób rzeczy z arg1 i arg2
+  # możesz mieć dowolną liczbę argumentów
+  # lista poleceń do `R` może być wprowadzona tutaj
+  # ostatnia linia jest zwrócona
 }
 ```
 
@@ -815,11 +808,11 @@ A oto trywialny przykład definicji funkcji:
 ```{r}
 witaj <- function(imie = "Lord Vader"){
   paste("Witaj,",imie)
-  # we could also write:
+  # mozemy również napisać:
   # return(paste("Wiatj",imie))
 }
 
-# we call the function by typing it's name with round brackets
+# wywołujemy funkcję, pisząc jej nazwę z okrągłymi nawiasami.
 witaj()
 ```
 Widzisz, że jeśli nie określisz argumentu „twoje_imię”, „R” powraca do podanej wartości domyślnej. Wypróbuj teraz pod własnym imieniem!
@@ -833,7 +826,7 @@ witaj
 Warto wziąć pod uwagę, że zanim zdefiniowaliśmy powyżej funkcję „witaj”, „R” nie wiedział, co zrobić, jeśli wywołałeś funkcję „hello()”. Funkcja nie istniała! W tym sensie *nauczyliśmy „R” nowej sztuczki*. Ta funkcja tworzenia nowych możliwości poza językiem podstawowym jest jedną z najpotężniejszych cech języków programowania. Ogólnie rzecz biorąc, dobrą praktyką jest dzielenie kodu na kilka mniejszych funkcji zamiast jednego długiego pliku skryptu. Dzięki temu Twój kod będzie bardziej czytelny i łatwiej będzie wyśledzić błędy.
 
 
-#### Task 6
+#### Zadanie 6
 
 1. Napisz pętlę for, która odlicza od 10 do 1 i wypisuje na ekranie wartość iteratora.
 1. Zmodyfikuj tę pętlę, aby zapisać „i iteracje do wykonania”, gdzie „i” jest iteratorem

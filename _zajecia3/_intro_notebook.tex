@@ -452,7 +452,7 @@ wyglądać następująco:
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# everything after a \# is a comment, i.e. R disregards it.}
+\CommentTok{\# wszystko po \# jest komentarzem i R ignoruje to.}
 \end{Highlighting}
 \end{Shaded}
 
@@ -585,10 +585,9 @@ czegoś w rodzaju „{[}7{]}'', gdzie „7'' jest indeksem pierwszego
 elementu tego wiersza.
 
 Prawdopodobnie najczęstszym sposobem tworzenia wektora w „R'' jest
-użycie funkcji „c()'', która jest skrótem od „połącz''. Jak sama nazwa
-wskazuje, łączy w sobie listę elementów oddzielonych przecinkami. (Czy
-jesteś zajęty wpisywaniem wszystkich tych przykładów w konsoli „R''? :-)
-)
+użycie funkcji „c()'', która jest skrótem od „połącz'' (coerce). Jak
+sama nazwa wskazuje, łączy w sobie listę elementów oddzielonych
+przecinkami.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -816,10 +815,9 @@ Wypróbujmy to! \textbf{Twoja kolej}:
 \hypertarget{wywoux142ywanie-subsetting}{%
 \paragraph{Wywoływanie (Subsetting)}\label{wywoux142ywanie-subsetting}}
 
-Aby podzielić wektor na podzbiór, czyli wybrać tylko niektóre jego
-elementy, używamy nawiasów kwadratowych „{[}{]}''. Widzimy tutaj, że
-\texttt{x{[}1{]}} zwraca pierwszy element, a \texttt{x{[}3{]}} zwraca
-trzeci element:
+Aby wywołać z wektora tylko niektóre jego elementy, używamy nawiasów
+kwadratowych „{[}{]}''. Widzimy tutaj, że \texttt{x{[}1{]}} zwraca
+pierwszy element, a \texttt{x{[}3{]}} zwraca trzeci element:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1194,8 +1192,8 @@ numeryczne ma miejsce w przypadku większości operacji matematycznych.
 ## [1] 6
 \end{verbatim}
 
-\hypertarget{task-2}{%
-\paragraph{Task 2}\label{task-2}}
+\hypertarget{zadanie-2}{%
+\paragraph{Zadanie 2}\label{zadanie-2}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -1530,10 +1528,6 @@ odwracalna.
 \hypertarget{arrays---tablice}{%
 \subsubsection{Arrays - tablice}\label{arrays---tablice}}
 
-A vector is a one-dimensional array. A matrix is a two-dimensional
-array. In \texttt{R} you can create arrays of arbitrary dimensionality
-\texttt{N}. Here is how:
-
 Wektor jest tablicą jednowymiarową. Macierz jest tablicą dwuwymiarową. W
 \texttt{R} możesz tworzyć tablice o dowolnej wymiarowości \texttt{N}.
 Oto jak:
@@ -1542,7 +1536,7 @@ Oto jak:
 \begin{Highlighting}[]
 \NormalTok{d }\OtherTok{=} \DecValTok{1}\SpecialCharTok{:}\DecValTok{16}
 \NormalTok{d3 }\OtherTok{=} \FunctionTok{array}\NormalTok{(}\AttributeTok{data =}\NormalTok{ d,}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
-\NormalTok{d4 }\OtherTok{=} \FunctionTok{array}\NormalTok{(}\AttributeTok{data =}\NormalTok{ d,}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))  }\CommentTok{\# will recycle 1:16}
+\NormalTok{d4 }\OtherTok{=} \FunctionTok{array}\NormalTok{(}\AttributeTok{data =}\NormalTok{ d,}\AttributeTok{dim =} \FunctionTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{)) }
 \NormalTok{d3}
 \end{Highlighting}
 \end{Shaded}
@@ -1978,15 +1972,23 @@ Aby wczytać te dane z powrotem do \texttt{R}, użyjemy wbudowanej funkcji
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{example\_data\_from\_disk }\OtherTok{=} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"example{-}data.csv"}\NormalTok{)}
+\NormalTok{example\_data\_from\_disk}
 \end{Highlighting}
 \end{Shaded}
 
-Ta konkretna linia kodu zakłada, że zainstalowałeś powiązany pakiet R z
-tą książką, dlatego masz ten zestaw danych przechowywany na swoim
-komputerze w
-\texttt{system.file(package\ =\ "ScPoEconometrics","datasets","example-data.csv")}.
-
-\#\texttt{\{r\}\ \#example\_data\_from\_disk\ \#}
+\begin{verbatim}
+##    x       y     z
+## 1  1   Hello  TRUE
+## 2  3   Hello FALSE
+## 3  5   Hello  TRUE
+## 4  7   Hello FALSE
+## 5  9   Hello  TRUE
+## 6  1   Hello FALSE
+## 7  3   Hello  TRUE
+## 8  5   Hello FALSE
+## 9  7   Hello  TRUE
+## 10 9 Goodbye FALSE
+\end{verbatim}
 
 Korzystając z danych, zazwyczaj chcielibyśmy zrobić trzy rzeczy:
 
@@ -2291,14 +2293,13 @@ właśnie zdefiniowaliśmy. Jest \textbf{lokalny} dla funkcji:
 ## [1] 3
 \end{verbatim}
 
-\hypertarget{control-flow}{%
-\subsubsection{Control Flow}\label{control-flow}}
+\hypertarget{warunki}{%
+\subsubsection{Warunki}\label{warunki}}
 
-Przepływ kontroli odnosi się do sposobów dostosowywania kodu do różnych
-okoliczności. Opierając się na tym, że „warunek'' ma wartość „PRAWDA'',
-Twój program wykona jedną rzecz, a nie inną. Jest to najbardziej znane
-jako instrukcja „if/else''. W \texttt{R} składnia if/else wygląda
-następująco:
+Warunkowanie pomaga dostosowywć kod do różnych okoliczności. Opierając
+się na tym, że „warunek'' ma wartość „PRAWDA'', Twój program wykona
+jedną rzecz, a nie inną. Jest to najbardziej znane jako instrukcja
+„if/else''. W \texttt{R} składnia if/else wygląda następująco:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2437,11 +2438,11 @@ zachowania funkcji. Oto jak zdefiniować funkcję:
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{function\_name }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(arg1,}\AttributeTok{arg2=}\NormalTok{wartosc\_domyslna)\{}
-  \CommentTok{\# function body}
-  \CommentTok{\# you do stuff with arg1 and arg2}
-  \CommentTok{\# you can have any number of arguments, with or without defaults}
-  \CommentTok{\# any valid \textasciigrave{}R\textasciigrave{} commands can be included here}
-  \CommentTok{\# the last line is returned}
+  \CommentTok{\# caiło funkcji {-} function body}
+  \CommentTok{\# zrób rzeczy z arg1 i arg2}
+  \CommentTok{\# możesz mieć dowolną liczbę argumentów}
+  \CommentTok{\# lista poleceń do \textasciigrave{}R\textasciigrave{} może być wprowadzona tutaj}
+  \CommentTok{\# ostatnia linia jest zwrócona}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
@@ -2452,11 +2453,11 @@ A oto trywialny przykład definicji funkcji:
 \begin{Highlighting}[]
 \NormalTok{witaj }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(}\AttributeTok{imie =} \StringTok{"Lord Vader"}\NormalTok{)\{}
   \FunctionTok{paste}\NormalTok{(}\StringTok{"Witaj,"}\NormalTok{,imie)}
-  \CommentTok{\# we could also write:}
+  \CommentTok{\# mozemy również napisać:}
   \CommentTok{\# return(paste("Wiatj",imie))}
 \NormalTok{\}}
 
-\CommentTok{\# we call the function by typing it\textquotesingle{}s name with round brackets}
+\CommentTok{\# wywołujemy funkcję, pisząc jej nazwę z okrągłymi nawiasami.}
 \FunctionTok{witaj}\NormalTok{()}
 \end{Highlighting}
 \end{Shaded}
@@ -2480,7 +2481,7 @@ jest przydatne:
 \begin{verbatim}
 ## function(imie = "Lord Vader"){
 ##   paste("Witaj,",imie)
-##   # we could also write:
+##   # mozemy również napisać:
 ##   # return(paste("Wiatj",imie))
 ## }
 \end{verbatim}
@@ -2494,8 +2495,8 @@ Ogólnie rzecz biorąc, dobrą praktyką jest dzielenie kodu na kilka
 mniejszych funkcji zamiast jednego długiego pliku skryptu. Dzięki temu
 Twój kod będzie bardziej czytelny i łatwiej będzie wyśledzić błędy.
 
-\hypertarget{task-6}{%
-\paragraph{Task 6}\label{task-6}}
+\hypertarget{zadanie-6}{%
+\paragraph{Zadanie 6}\label{zadanie-6}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
