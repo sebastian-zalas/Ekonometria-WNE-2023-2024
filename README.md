@@ -10,7 +10,7 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
 - Konkurs modeli: osoby z najlepszymi projektami mogą być zwolnione z egzaminu, pod warunkiem uzyskania co najmniej oceny 4 z kolokwium.
 
 ## Zajęcia
-1. 4-5 października 2023: powtórzenie z algebry.
+**1. 4-5 października 2023: powtórzenie z algebry.**
   - Omówiliśmy ogólne warunki zaliczenia.
   - Powtórzyliśmy podstawowe pojęcia z algebry liniowej.
   - Zrobiliśmy zadania 1-6 oraz 9-12.
