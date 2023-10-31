@@ -19,7 +19,7 @@ seq(10, 0, -1)
 # `[1 1 1 2 2 2 3 3 3 1 1 1 2 2 2 3 3 3]`
 (wek2=rep( c(rep(1,3),rep(2,3),rep(3,3)),2 ))
 
-###### Zadanie 1 ######
+###### Zadanie 2 ######
 # Utwórz wektor wypełniony 10 liczbami wylosowanymi 
 # z rozkładu jednostajnego (podpowiedź: użyj funkcji „runif”) 
 # i zapisz je w `x`.
@@ -51,3 +51,33 @@ m%*%v
 # Dlaczego `v %*% m` nie działa?
 v%*%m
 
+
+#### Zadanie 4
+# Skopiuj i wklej powyższy kod z `ex_list` do swojej sesji R. 
+# Pamiętaj, że `lista` może zawierać dowolny obiekt `R`. Jak... kolejna lista! 
+# Utwórz więc nową listę „nowa_lista”, która ma dwa pola: 
+# pierwsze pole o nazwie „to” z zawartością „jest niesamowity” i 
+# drugie pole o nazwie „ex_list”, które zawiera „ex_list”.
+
+ex_list = list(
+  a = c(1, 2, 3, 4),
+  b = TRUE,
+  c = "Hello!",
+  d = function(arg = 42) {print("Hello World!")},
+  e = diag(5)
+)
+
+nowa_lista = list(
+ a = "to",
+ b =  "jest niesamowity",
+ ex_list =  ex_list
+)
+
+# Dostęp do elementów odbywa się jak na zwykłej liście, 
+# tylko z kilkoma warstwami. Pobierz element `c` z `ex_list` w `nowa_lista`!
+nowa_lista$ex_list$c
+
+# Utwórz nowy wyraz z pierwszego elementu w `nowa_lista', 
+# elementu pod etykietą `this`. Użyj funkcji „paste”, 
+# aby wydrukować na ekranie „R jest niesamowity”.
+paste("R - ", nowa_lista$a, nowa_lista$b)
