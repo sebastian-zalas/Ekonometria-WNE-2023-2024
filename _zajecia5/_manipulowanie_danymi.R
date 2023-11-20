@@ -10,6 +10,7 @@
 
 # załadujmy pakiet, daje nam dostęp do zbiorU danych mpg
 library(ggplot2)
+install.packages("ggplot")
 ?mpg # dokumentacja danych
 
 ### Miary tendencji centralnej - średnia, mediana
@@ -54,7 +55,7 @@ hist(mpg$cty,
      breaks = 12,   # ile przedziałów?
      col    = "red",
      border = "blue")
-
+?hist
 # Co ważne, zawsze pamiętaj o oznaczeniu osi i nadaniu tytułu. 
 # Argument „breaks” jest specyficzny dla „hist()”. Wprowadzenie liczby całkowitej 
 # spowoduje, że „R” zasugeruje liczbę słupków użytych w histogramie. 
@@ -95,7 +96,7 @@ boxplot(mpg$hwy)
 # zmiennej numerycznej dla różnych wartości zmiennej kategorycznej.
 
 boxplot(hwy ~ drv, data = mpg)
-
+?mpg
 # Tutaj użyto polecenia `boxplot()` do tworzenia wykresów pudełkowych obok siebie.
 # Ponieważ jednak mamy teraz do czynienia z dwiema zmiennymi, składnia uległa 
 # zmianie. Składnia `R` `hwy ~ drv, dane = mpg` brzmi: „Wykreśl zmienną `hwy` 
@@ -257,18 +258,26 @@ select(filter(mpg, hwy > 35), manufacturer, model, year)
 # 1. Upewnij się, że masz załadowany zbiór danych `mpg`, wpisując `data(mpg)` (i `library(ggplot2)`
 # , jeśli jeszcze tego nie zrobiłeś!). Użyj funkcji „table”, aby dowiedzieć się, 
 # ile samochodów zbudowało *merkury*?
- 
+data(mpg) 
+?mpg
+table(mpg$manufacturer)
 
 # 2. Jaki jest średni rok produkcji Audi w tym zbiorze danych? 
 # Użyj funkcji „średnia” w podzbiorze kolumny „rok”, który odpowiada „audi”. 
 # (Uważaj: podzbiór `tibble` zwraca `tibble` (a nie wektor)!. 
 # więc kolumnę `rok` uzyskaj po podzieleniu `tibble`.)
+as.vector(mpg[mpg$manufacturer=="audi", c("year")])
+
+mpg %>% filter(manufacturer=="audi") %>% summarise(mean(year), sd(year))
 
 # 3. Użyj powyższej składni potoku `dplyr`, najpierw z `group_by`, 
 # a następnie z `summarise(newvar=your_expression)`, 
 # aby znaleźć średni `rok` dla wszystkich producentów 
 # (tj. tak samo jak poprzednie zadanie, ale dla wszystkich producentów. nie pisz pętli!).
-
+mpg %>% 
+  select(manufacturer, year) %>% 
+    group_by(manufacturer) %>% 
+      summarise(mean(year))
 
 ### Przykład: Importowanie danych w formacie Excel'a
 # Dane, którym się przyjrzymy, pochodzą z Eurostatu
@@ -290,8 +299,8 @@ library(dplyr)
 library(tidyr)
 
 # dane o populacji
-tot_pop_raw = read_excel(
-              path="C:/Users/szalas/OneDrive/_ekonometria2023/_5_data_management/demoxls.xls", 
+setwd("C:\\Users\\alter-ego\\OneDrive\\_ekonometria2023\\ekonometria_wne_2023\\_zajecia5")
+tot_pop_raw = read_excel( path="demoxls.xls", 
               sheet="demo", # wybieramy arkusz
               range="A1:Q1522")  # wybieramy zakres komórek do wczytania
 tot_pop_raw
@@ -328,6 +337,7 @@ tot_pop
 table(tot_pop$indicator)
 
 # install.packages("countrycode")
+install.packages("countrycode")
 library(countrycode)
 help(countrycode)
 

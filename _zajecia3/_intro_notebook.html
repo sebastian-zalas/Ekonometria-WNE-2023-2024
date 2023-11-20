@@ -2815,10 +2815,10 @@ bardziej czytelną składnię.</p>
 <pre class="r"><code>subset(mtcars, subset = mpg &gt; 25, select = c(&quot;cyl&quot;, &quot;disp&quot;, &quot;wt&quot;))</code></pre>
 <div id="zadanie-5" class="section level4">
 <h4>Zadanie 5</h4>
-<p>1.Ile obserwacji jest w <code>mtcars</code>? 1. Ile zmiennych? 1.
-Jaka jest średnia wartość <code>mpg</code>? 1. Jaka jest średnia wartość
-<code>mpg</code> dla samochodów mających więcej niż 4 cylindry, czyli z
-<code>cyl&gt;4</code>?</p>
+<p>1.Ile obserwacji jest w <code>mtcars</code>? 1. Ile zmiennych? ncol
+1. Jaka jest średnia wartość <code>mpg</code>? 1. Jaka jest średnia
+wartość <code>mpg</code> dla samochodów mających więcej niż 4 cylindry,
+czyli z <code>cyl&gt;4</code>?</p>
 </div>
 </div>
 </div>
@@ -2858,7 +2858,7 @@ następująco:</p>
   some other R code
 }</code></pre>
 <p>Na przykład,</p>
-<pre class="r"><code>x = 1
+<pre class="r"><code>x = 5
 y = 3
 if (x &gt; y) {  # test if x &gt; y
   # if TRUE
@@ -2869,9 +2869,9 @@ if (x &gt; y) {  # test if x &gt; y
   z = x + 5 * y
   print(&quot;x mniejsze równe y&quot;)
 }</code></pre>
-<pre><code>## [1] &quot;x mniejsze równe y&quot;</code></pre>
+<pre><code>## [1] &quot;x większe y&quot;</code></pre>
 <pre class="r"><code>z</code></pre>
-<pre><code>## [1] 16</code></pre>
+<pre><code>## [1] 15</code></pre>
 </div>
 <div id="pętle" class="section level3">
 <h3>Pętle</h3>
@@ -2931,7 +2931,7 @@ to, że funkcje są znacznie bardziej elastyczne niż skrypty, ponieważ
 mogą zależeć od <em>argumentów wejściowych</em>, które zmieniają sposób
 zachowania funkcji. Oto jak zdefiniować funkcję:</p>
 <pre class="r"><code>function_name &lt;- function(arg1,arg2=wartosc_domyslna){
-  # caiło funkcji - function body
+  # ciało funkcji - function body
   # zrób rzeczy z arg1 i arg2
   # możesz mieć dowolną liczbę argumentów
   # lista poleceń do `R` może być wprowadzona tutaj

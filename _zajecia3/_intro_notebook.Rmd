@@ -694,6 +694,7 @@ subset(mtcars, subset = mpg > 25, select = c("cyl", "disp", "wt"))
 
 1.Ile obserwacji jest w `mtcars`?
   1. Ile zmiennych?
+  ncol
   1. Jaka jest średnia wartość `mpg`?
   1. Jaka jest średnia wartość `mpg` dla samochodów mających więcej niż 4 cylindry, czyli z `cyl>4`?
   
@@ -733,7 +734,7 @@ if (condition = TRUE) {
 Na przykład,
 
 ```{r}
-x = 1
+x = 5
 y = 3
 if (x > y) {  # test if x > y
   # if TRUE
@@ -796,7 +797,7 @@ Do tej pory korzystaliśmy z funkcji, ale tak naprawdę nie omawialiśmy niektó
 
 ```{r eval=FALSE}
 function_name <- function(arg1,arg2=wartosc_domyslna){
-  # caiło funkcji - function body
+  # ciało funkcji - function body
   # zrób rzeczy z arg1 i arg2
   # możesz mieć dowolną liczbę argumentów
   # lista poleceń do `R` może być wprowadzona tutaj
@@ -814,7 +815,7 @@ witaj <- function(imie = "Lord Vader"){
 }
 
 # wywołujemy funkcję, pisząc jej nazwę z okrągłymi nawiasami.
-witaj()
+witaj("x")
 ```
 Widzisz, że jeśli nie określisz argumentu „twoje_imię”, „R” powraca do podanej wartości domyślnej. Wypróbuj teraz pod własnym imieniem!
   
