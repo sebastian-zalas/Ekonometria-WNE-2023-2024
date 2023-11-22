@@ -20,10 +20,19 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - Zadania 1,2,3,4,5,6,10 oraz 2 i 3 z rozkładu normalnego - rozwiązania są opublikowane
 3. **18-19 października 2023**
   - Zrobiliśmy wprowadzenie do R.
-  - Prcowaliśmy z plikiem _intro_notebook.Rmd
+  - Pracowaliśmy z plikiem _intro_notebook.Rmd
     - Aby otworzyć plik w domu należy zainstalować pakiety 'knitr' oraz 'rmarkdown. Po ich zainstalowaniu proszę skorzystać z opcji KNITR.
     - W razie problemów prosze o kontakt.
     - Można także skorystać z pliku _intro_notebook.html i otworzyć go w przeglądarce.
 4. **25-26 października 2023**
   - Metoda Najmniejszych Kwadratów
+5. **8-9 listopada 2023**
+  - Kartkówka nr 1.
+  - Manipulowanie danymi w R - zobacz kod w folderze nr 5.
+6. **15-16 listopada 2023**
+  - Współczynnik determinacji, interpratacja parametrów, transforacja logarytmiczna - materiały są dostepne.
+7. **22-23 listopada 2023**
+  - TBA - Kartkówka nr 2.
+
+
   
