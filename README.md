@@ -33,6 +33,4 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - Współczynnik determinacji, interpratacja parametrów, transforacja logarytmiczna - materiały są dostepne.
 7. **22-23 listopada 2023**
   - TBA - Kartkówka nr 2.
-
-
   
