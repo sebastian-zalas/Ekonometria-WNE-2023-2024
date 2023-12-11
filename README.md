@@ -11,7 +11,7 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - 40% kolokwium (należy uzyskać min 50 proc. punktów)
   - 40% projekt (należy uzyskać min 50 proc. punktów)
 - Konkurs modeli: osoby z najlepszymi projektami mogą być zwolnione z egzaminu, pod warunkiem uzyskania co najmniej oceny 4 z kolokwium.
-- Informacje o projekcie
+- Informacje o projekcie https://github.com/sebastian-zalas/Ekonometria-WNE-2023-2024/blob/main/_misc/_projekt.pdf
 
 ## Projekt
 - proszę o kontakt w sprawie modeli (via mail lub na konsultacjach)
