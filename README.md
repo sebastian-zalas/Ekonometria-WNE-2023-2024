@@ -8,8 +8,8 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
 - Termin kolokwium: TBA
 - Ocena z ćwiczeń:
   - 20% kartkówki (należy zaliczyć min. 4 kartkówki z 5)
-  - 40% kolokwium (należy uzyskać min 50 proc. punktów)
-  - 40% projekt (należy uzyskać min 50 proc. punktów)
+  - 40% kolokwium (należy uzyskać min. 50 proc. punktów)
+  - 40% projekt (należy uzyskać min. 50 proc. punktów)
 - Konkurs modeli: osoby z najlepszymi projektami mogą być zwolnione z egzaminu, pod warunkiem uzyskania co najmniej oceny 4 z kolokwium.
 - Informacje o projekcie https://github.com/sebastian-zalas/Ekonometria-WNE-2023-2024/blob/main/_misc/_projekt.pdf
 
