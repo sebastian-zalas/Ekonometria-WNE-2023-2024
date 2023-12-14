@@ -5,7 +5,7 @@
 rm(list = ls()) # wyczyść środowisko
 
 ## ścieżka
-setwd("C:\\Users\\szalas\\OneDrive\\_ekonometria2023\\_lab3")
+setwd("C:\\Users\\szalas\\OneDrive\\_ekonometria2023\\_9")
 
 ## instalowanie pakietów
 install.packages("dyplyr")
@@ -46,7 +46,7 @@ table(cps09$nonwhite)
 
 # status matrymonialny
 table(cps09$marital)
-cps09$marital = ifelse(cps09$marital==c(1,2,3), 1, 0)
+cps09$marital = ifelse(cps09$marital >=1 & cps09$marital<=3, 1, 0)
 table(cps09$marital)
 
 ##### statystyki opisowe #####
@@ -76,7 +76,7 @@ table(cps09$marital)
   write_xlsx(stats_tab,"output\\statystyki_opisowe.xlsx")
   
   ## 3 - dla uzytkowników latex'a (i nie tylko)
-  cps09short = cps09[ , c("hwage", "education", "female", "marital", "age", "race", "marital", "union")]
+  cps09short = cps09[ , c("hwage", "education", "female", "marital", "age", "race", "union")]
   
   ## raportowanie i zapisywanie w .csv, .txt, .html lub .tex
   stargazer(
@@ -97,9 +97,9 @@ table(cps09$marital)
   #   Copy and paste the table from the web browser to your Microsoft Word document.
 
 ##### eksplorowanie danych #####
-  # png(filename="class6_lceo.png", width = 800, height = 600)
-  # plotlceo
-  # dev.off()
+  
+  # zapisywanie wykresu
+  png(filename="output//wykres_place_edukacja.png", width = 800, height = 600)
   plot(hwage ~ education, data = cps09,
        xlab = "Edukacja",
        ylab = "Płaca na godzinę",
@@ -107,6 +107,7 @@ table(cps09$marital)
        pch  = 20,
        cex  = 1,
        col  = "navy")  
+  dev.off() 
   
   plot(lhwage ~ education, data = cps09,
        xlab = "Edukacja",

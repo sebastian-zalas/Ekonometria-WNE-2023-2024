@@ -1,6 +1,14 @@
 
+##### wczytanie danych i wstępne przetworzenie #####
+firms = read.csv("data\\firms.csv", header = TRUE, sep = ",", quote = "\"",
+         dec = ".", fill = TRUE)
 
-# 5. Usuń obserwacje z brakującymi danymi w STAF, AV, EMPL, STAF. 
+colnames(firms) = c("X", "id", "year", "employment", "addedval", "laborcost", "sales", "totalassets", "nacerev1primarycode", "year_inc", "indcode")
+
+firms = firms %>% select(-c("X"))
+
+
+# Usuń obserwacje z brakującymi danymi w STAF, AV, EMPL, STAF. 
 # Czy występują ujemne wartości w tych zmiennych? Czy one maja˛ sens?
 
 # usuwamy brakujące dane
