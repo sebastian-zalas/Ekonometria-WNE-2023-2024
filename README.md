@@ -46,7 +46,7 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - Współczynnik determinacji, interpratacja parametrów, transforacja logarytmiczna - materiały są dostepne.
 
 7. **22-23 listopada 2023**
-  - Modele z logarytmami, zm. binarnymi i kategroycznymi; interpretacja parametrów.
+  - Modele z logarytmami, zm. binarnymi i kategorycznymi; interpretacja parametrów.
 
 7. **29-30 listopada 2023**
   - Nieliniowość w regresji - wielomiany oraz interakcje; interpretacja parametrów.
@@ -58,5 +58,8 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - komentarze do zadań są dostępne w folderze.
 
 10. **13-14 grudnia 2023**
-  - Laboratorium n. 3. Sala A001.
+  - Zajmowaliśmy się szacowaniem regresji w R, łącznie z odpornymi błędami standardowymi
+  - Pokazalismy także jak wygodnie raportować wyniki regresji, wykresy oraz staystyki
+  - Poznalismy funkcje przeprowadzające testy na heteroskedastyczność  
+  - Matreriały (włącznie z rozwiązaniem) są dostępne w folderze _9
   
