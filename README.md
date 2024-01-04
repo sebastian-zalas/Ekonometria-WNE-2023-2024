@@ -62,4 +62,9 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - Pokazalismy także jak wygodnie raportować wyniki regresji, wykresy oraz staystyki
   - Poznalismy funkcje przeprowadzające testy na heteroskedastyczność  
   - Matreriały (włącznie z rozwiązaniem) są dostępne w folderze _9
+
+11. **19 & 21 grudnia 2023**
+  - Pokazalismy jak przeprowadzić podstawowe testy statytyczne dot. modelu ekonometrycznego: testowanie istotności, testowanie łącznej istotności, testowanie heteroskedastyczności.
+  - Rozwiązania zadań w folderze _10
+
   
