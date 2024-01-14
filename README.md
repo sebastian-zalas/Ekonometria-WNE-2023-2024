@@ -67,4 +67,8 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
   - Pokazalismy jak przeprowadzić podstawowe testy statytyczne dot. modelu ekonometrycznego: testowanie istotności, testowanie łącznej istotności, testowanie heteroskedastyczności.
   - Rozwiązania zadań w folderze _zajecia10
 
+11. **19 & 21 grudnia 2023**
+  - Pokazalismy jak przeprowadzić podstawowe testy diagnostyczne w R.
+  - Materiały i rozwiązanie zadania w folderze _zajecia11
+
   
