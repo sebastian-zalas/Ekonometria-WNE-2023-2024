@@ -5,7 +5,7 @@ Repozytorium zawiera materiały do ćwiczeń z Ekonometrii w semestrze zimowym r
 - Kontakt: s.zalas@uw.edu.pl (nie mam adresu w domenie WNE)
 - Konsulatcje: w razie potrzeby proszę o kontakt mailowy. Możemy umówić się także online.
 - Terminy kartkówek: TBA
-- Termin kolokwium: TBA
+- Termin kolokwium: ostatnie zajęcia. Sale będą podane wkrótce.
 - Ocena z ćwiczeń:
   - 20% kartkówki (należy zaliczyć min. 4 kartkówki z 5)
   - 40% kolokwium (należy uzyskać min. 50 proc. punktów)
